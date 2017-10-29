@@ -12,7 +12,7 @@ First, we will create new Azure VNET and VPN Gateway resources. Navigate to the 
 ```PowerShell
 Login-AzureRmAccount
 
-.\DeployVPN.ps1 -SubscriptionName "My Subscription" -ResourceGroupName "ContosoVNetGroup" -Location "westus" -VNetName "ContosoVNet" -VNetGatewayName "ContosoGateway" -AddressPrefix "10.254.0.0/16" -GatewaySubnetPrefix "10.254.1.0/24" -OnpremiseVPNClientSubnetPrefix "192.168.200.0/24" -RootCertificateName "ContosoRootCertificate" -ChildCertificateName "ContosoChildCertificate"
+.\DeployVPN.ps1 -SubscriptionName "My Subscription" -ResourceGroupName "ContosoVNetGroup" -Location "eastus" -VNetName "ContosoVNet" -VNetGatewayName "ContosoGateway" -AddressPrefix "10.254.0.0/16" -GatewaySubnetPrefix "10.254.1.0/24" -OnpremiseVPNClientSubnetPrefix "192.168.200.0/24" -RootCertificateName "ContosoRootCertificate" -ChildCertificateName "ContosoChildCertificate"
 ```
 
 In addition to provisioning Azure VNET and VPN Gateway resources, the script above will also create a self-signed root certificate and a client certificate for the VPN gateway. The root certificate is used for generating and signing client certificates on the client side, and for validating those client certificates on the VPN gateway side.
@@ -32,10 +32,12 @@ Export-PfxCertificate -Cert $childCert -FilePath "ContosoChildCertificate.pfx" -
 
 ## Provisioning the Domain Controller
 
-The next step is to deploy a Domain Controller VM and set up a new domain. All VMs provisioned during the EDW TRA deployment will join the domain managed by the domain controller. To do that, run the PowerShell script below.
+The next step is to deploy a Domain Controller VM and set up a new domain. All VMs provisioned during the solution's deployment will join the domain managed by the domain controller. To do that, run the PowerShell script below.
 
 ```PowerShell
-.\DeployDC.ps1 -SubscriptionName "My Subscription" -Location "westus" -ResourceGroupName "ContosoVNetGroup" -VNetName "ContosoVNet" -DomainName "contosodomain.ms" -DomainUserName "edwadmin" -DomainUserPassword "MyPassword"
+$securePassword = ConvertTo-SecureString -String "MyPassword" -Force –AsPlainText
+
+.\DeployDC.ps1 -SubscriptionName "My Subscription" -Location "eastus" -ResourceGroupName "ContosoVNetGroup" -VNetName "ContosoVNet" -DomainName "contosodomain.ms" -DomainUserName "MyUser" -DomainUserPassword $securePassword
 ```
 
 The script above will provision an Azure VM and promote it to serve as the domain controller for the VNET. In addition, it will reconfigure the VNET to use the newly provisioned VM as its DNS server.

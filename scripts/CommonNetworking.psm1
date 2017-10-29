@@ -14,7 +14,7 @@ Function Get-VirtualNetworkOrExit(
 
         if (-not $virtualNetwork) {
             Write-Host -ForegroundColor DarkRed "Unable to get virtual network $($VirtualNetworkName). Exiting..."
-            Display-VnetErrorMessage
+            Write-VnetErrorMessage
 
             exit 3
         }
@@ -23,7 +23,7 @@ Function Get-VirtualNetworkOrExit(
     } catch {
         Write-Host -ForegroundColor DarkRed "Unable to get virtual network $($VirtualNetworkName). Exiting..."
         Write-Host $Error[0]
-        Display-VnetErrorMessage
+        Write-VnetErrorMessage
 
         exit 3
     }
@@ -84,7 +84,7 @@ Function Get-AvailableSubnetOrExit(
         $gatewaySubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $GatewaySubnetName -VirtualNetwork $VirtualNetwork
         if (-not $gatewaySubnet) {
             Write-Host -ForegroundColor DarkRed "Unable to get subnet for deployment. Exiting..."
-            Display-VnetErrorMessage
+            Write-VnetErrorMessage
 
             exit 4
         }
@@ -134,12 +134,12 @@ Function Get-AvailableSubnetOrExit(
         }
 
         Write-Host -ForegroundColor DarkRed "Unable to find free subnet for deployment. Exiting..."
-        Display-VnetErrorMessage
+        Write-VnetErrorMessage
 
         exit 4
     } catch {
         Write-Host -ForegroundColor DarkRed "Unable to get subnet for deployment. Exiting..."
-        Display-VnetErrorMessage
+        Write-VnetErrorMessage
 
         Write-Host $Error[0]
 
@@ -163,7 +163,7 @@ Function New-Subnet(
     Set-AzureRmVirtualNetwork -VirtualNetwork $VirtualNetwork
 }
 
-Function Display-VnetErrorMessage()
+Function Write-VnetErrorMessage()
 {
     Write-Host -ForegroundColor DarkRed "Unable to determine VNET or subnet used for this deployment."
     Write-Host -ForegroundColor DarkRed "If your setup uses point-to-site VPN configuration, please run DeployVPN.ps1 script before running this script."
