@@ -1,13 +1,13 @@
 
 # Technical Reference Implementation for Enterprise BI and Reporting
 
-Azure offers a rich data and analytics platform for customers and ISVs seeking to build scalable BI and Reporting solutions. However, customers face pragmatic challenges in building the right infrastructure for enterprise-grade, production systems. They have to evaluate the various products for security, scale, performance and geo-availability requirements. They have to understand service features and their interoperability, and plan to address any perceived gaps with custom software. This takes time and effort, and many times, the end to end system architecture they design is sub-optimal. Consequently, the promise and expectations set during proof-of-concept (POC) stages do not translate to robust production systems in the expected time to market.
+Azure offers a rich data and analytics platform for customers and ISVs seeking to build scalable BI and reporting solutions. However, customers face pragmatic challenges in building the right infrastructure for enterprise-grade, production systems. They have to evaluate the various products for security, scale, performance and geo-availability requirements. They have to understand service features and their interoperability, and plan to address any perceived gaps with custom software. This takes time and effort, and many times, the end to end system architecture they design is sub-optimal. Consequently, the promise and expectations set during proof-of-concept (POC) stages do not translate to robust production systems in the expected time to market.
 
-This TRI addresses this customer pain by providing a reference implementation that
-- is pre-built based on selected, stable Azure components proven to work in enterprise BI and reporting scenarios
-- can be easily configured and deployed to an Azure subscription within a few hours,
-- is bundled with software to handle all the operational essentials for a full fledged production system, and
-- is tested end to end against large workloads.
+This TRI addresses this customer pain by providing a reference implementation that is:
+- pre-built based on selected, stable Azure components proven to work in enterprise BI and reporting scenarios
+- easily configured and deployed to an Azure subscription within a few hours
+- bundled with software to handle all the operational essentials for a full fledged production system
+- tested end to end against large workloads
 
 Once deployed, the TRI can be used as-is, or customized to fit the application needs using the technical documentation that is provided with the TRI. This enables the customer to build the solution that delivers the business goals based on a robust and functional infrastructure.
 
