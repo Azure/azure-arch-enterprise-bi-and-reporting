@@ -1,13 +1,12 @@
-﻿# Summary
-This page summarizes prerequisites for Technical Reference Implementation for Enterprise BI and Reporting solution. 
+﻿# Prequisites for deploying Technical Reference Implementation for Enterprise BI and Reporting
 
 # VNET
 
-Most of the resources provisioned will be placed in a pre-existing Azure VNET. Therefore, we require an Azure VNET resource and a domain controller to be deployed in the subscription where the solution will be deployed. Customers who already have a functioning Azure VNET and domain controller can skip this section. For customers new to Azure, the guide below will show how to easily deploy prerequisites in their subscription.
+Most of the resources provisioned will be placed in a pre-existing Azure VNET in the subscription that you will be specifying for the TRI to be deployed. Customers who already have a functioning Azure VNET and domain controller can skip this section. If not, an Azure VNET resource and a domain controller must be deployed in the subscription, following the steps provided in this guide.
 
-## Provisioning Azure VNet resource
+## Provisioning Azure VNet resource and creating root and client certificates
 
-First, we will create new Azure VNET and VPN Gateway resources. Navigate to the <source root>\scripts directory and run the command below. Note that it might take up to 45 minutes to complete.
+First, create a new Azure VNET and VPN Gateway resource. Navigate to the <source root>\scripts directory and run the command below, after the parameter values to ones that apply to your environment. Note that it might take up to 45 minutes to complete.
 
 ```PowerShell
 Login-AzureRmAccount
@@ -15,9 +14,13 @@ Login-AzureRmAccount
 .\DeployVPN.ps1 -SubscriptionName "My Subscription" -ResourceGroupName "ContosoVNetGroup" -Location "eastus" -VNetName "ContosoVNet" -VNetGatewayName "ContosoGateway" -AddressPrefix "10.254.0.0/16" -GatewaySubnetPrefix "10.254.1.0/24" -OnpremiseVPNClientSubnetPrefix "192.168.200.0/24" -RootCertificateName "ContosoRootCertificate" -ChildCertificateName "ContosoChildCertificate"
 ```
 
-In addition to provisioning Azure VNET and VPN Gateway resources, the script above will also create a self-signed root certificate and a client certificate for the VPN gateway. The root certificate is used for generating and signing client certificates on the client side, and for validating those client certificates on the VPN gateway side.
+The above script will provision the Azure VNET and VPN Gateway resources. In addition, it will create a self-signed root certificate (identified by ```ContosoRootCertificate``` in the above example), and a client certificate for the VPN gateway (identified by ```ContosoChildCertificate```). The root certificate is used for generating and signing client certificates on the client side, and for validating those client certificates on the VPN gateway side.
 
-To enable people in your organization to connect to the newly provisioned VNET via the VPN gateway, you will need to export the two certificates. You can use the commands below to generate the PFX files. The two files can then be shared and installed on the machines of users who need VPN access.
+## Export the certificates
+
+To enable users in your organization to connect to the newly provisioned VNET via the VPN gateway, you will need to export the two certificates to generate PFX files that they can import to their devices.
+
+From the same PowerShell console that you used above, run the commands shown below to generate the PFX files in the same directory (```ContosoRootCertificate.pfx``` and ```ContosoChildCertificate.pfx``` in the example)
 
 ```PowerShell
 $rootCert = Get-ChildItem -Path cert:\CurrentUser\My | ?{ $_.Subject -eq "CN=ContosoRootCertificate" }
@@ -29,10 +32,13 @@ $securePassword = ConvertTo-SecureString -String "MyPassword" -Force –AsPlainT
 Export-PfxCertificate -Cert $rootCert -FilePath "ContosoRootCertificate.pfx" -Password $securePassword -Verbose
 Export-PfxCertificate -Cert $childCert -FilePath "ContosoChildCertificate.pfx" -Password $securePassword -Verbose
 ```
+Share these two files with the users who need VPN access, instructing them to install these files in their client machines (using Certmgr or other tools).
 
 ## Provisioning the Domain Controller
 
-The next step is to deploy a Domain Controller VM and set up a new domain. All VMs provisioned during the solution's deployment will join the domain managed by the domain controller. To do that, run the PowerShell script below.
+The next step is to deploy a Domain Controller VM and set up a new domain. All VMs provisioned during the solution's deployment will join the domain managed by the domain controller.
+
+To do that, run the PowerShell script below.
 
 ```PowerShell
 $securePassword = ConvertTo-SecureString -String "MyPassword" -Force –AsPlainText
