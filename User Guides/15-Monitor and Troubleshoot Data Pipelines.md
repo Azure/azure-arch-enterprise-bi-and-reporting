@@ -20,7 +20,7 @@ Pipepline states:
 - *Waiting* - Pipeline job is waiting on an internal dependency to be completed befored being enqueued.
 - *Failed* - The pipeline failed for an unknown reason.
 
-![Dashboard](../img/adminui-dashboard.png)
+![Dashboard](../img/adminui_assets/adminui-dashboard.png)
 
 ### Azure Portal
 

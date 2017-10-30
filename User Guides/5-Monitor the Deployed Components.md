@@ -22,7 +22,7 @@ The Admin UI consists of four tabs - overview, details, data, and metrics. Below
 
 ## Overview
 
-![Overview](../img/adminui-overview.png)
+![Overview](../img/adminui_assets/adminui-overview.png)
 
 The overview tab shows the flow of data through the different component layers of the system, starting from the originating data source, to data ingestion, persistence, reporting, and ultimately consumption. All the boxes correspond to a resource deployed in Azure, except for the data source, which can be configured to be running on-premises.
 
@@ -46,7 +46,7 @@ Finally, the PBI Gateway box indicates the PBI Gateway enabling Power BI (PBI) r
 
 ## Details
 
-![Details](../img/adminui-details.png)
+![Details](../img/adminui_assets/adminui-details.png)
 
 The details tab shows at the top two tiles for the two logical data warehouses in the system. Each tile contains two time series graphs grouped by the state, active or load, of the logical data warehouse. The first graph shows the total job count for each state. The second graph shows the average job duration for each state. Each tile also shows the name of the associated SQL Server and the number of attached Direct Query nodes.
 
@@ -54,7 +54,7 @@ Below this is a table showing similar information, but in tabular format. Each r
 
 ## Data
 
-![Data](../img/adminui-data.png)
+![Data](../img/adminui_assets/adminui-data.png)
 
 The data tab lets your view the underying settings of the system, including DWTables, ControlServerProperties, StoredProcedures, TabularModelTablePartitions, and TabularModelNodeAssignments.
 
@@ -62,7 +62,7 @@ The data tab lets your view the underying settings of the system, including DWTa
 
 The metrics tab contains links to several pre-built Operations Management Suite (OMS) dashboards, including the Control Server, Partition Builder Nodes, Direct Query Nodes, Read Only Nodes, SQL Server Usage, and Azure Storage Analytics. By clicking a link, you will be taken to one of these dashboards, allowing you to see in greater detail information about that component of the system.
 
-![Metrics](../img/adminui-metrics.png)
+![Metrics](../img/adminui_assets/adminui-metrics.png)
 
 # Troubleshooting
 
