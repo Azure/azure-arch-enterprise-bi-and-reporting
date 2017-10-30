@@ -4,7 +4,17 @@
 This page lists the steps you need to take for preparing the installed infrastructure for ingesting your own data.
 
 
-## 1. Stopping Data generation #
+## 1. Install VPN Client
+
+ This has multiple steps:
+- Confirm that your client machine has the two certificates installed for VPN connectivity to the VM see [prerequisites]("1-Prerequisite Steps Before Deployment.md")
+- Login to http://portal.azure.com, and find the Resource Group that corresponds to the VNet setup. Pick the **Virtual Network** resource, and then the **Virtual Network Gateway** in that resource.
+- Click on **Point-to-site configuration**, and **Download the VPN client** to the client machine.
+- Install the 64-bit (Amd64) or 32-bit (x86) version based on your Windows operating system. The  modal dialog that pops up after you launch the application may show up with a single **Don't run** button. Click on **More**, and choose **Run anyway**.
+- Finally, choose the relevant VPN connection from **Network & Internet Settings**. This should set you up for the next step.
+
+
+## 2. Stopping Data generation #
 
 The TRI deploys a dedicated VM for data generation, with a Powershell script placed in the VM. The Powershell script is scheduled to run every 3 hours. We need to login into the VM and disable the schedule.
 
@@ -15,14 +25,14 @@ The TRI deploys a dedicated VM for data generation, with a Powershell script pla
 * Start the Task Scheduler app and disable the task named "Generate and upload data".
 
 
-## 2. Drop AdventureWorks tables
+## 3. Drop AdventureWorks tables
 
 As part of the initial deployment, the TRI installs AdventureWorks tables in the data darehouse. We need to drop the tables in all the physical data warehouse instances to create a clean schema for your organization.
 
 * Login into the physical data warehouse: As a pre-requisite, install SSMS or SQLCMD based on your personal preference. From the Azure Portal, get the list of SQL Data Warehouses (SQL DWs) installed in your resource group. Click on each server and ensure that the firewall setting in each DW allows your client machine to connect. Connect to the SQL DWs based on your client tool preference.
 * Drop the tables: Once you login into the SQL DW database named "dw", you will be able to view the list of tables created in the dbo schema. Use the Drop command to drop all the 29 AdventureWorks tables.
 
-## 3. Size your datawarehouse: 
+## 4. Size your datawarehouse: 
 
 As part of the initial deployment, the SQL DW physical instances are setup at DWU 100 to demonstrate the solution. Based on the data load volumes and query volumes, you will need to scale the SQL DW instances. Further details on sizing for scale are available [here](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview).
 
@@ -42,7 +52,7 @@ SET value = 1000
 Where Name = 'ComputeUnits_Load'
 ```
 
-## 4. Optionally override the initial setting for flip time
+## 5. Optionally override the initial setting for flip time
 
 As part of the initial deployment, the datawarehouses Reader and Loader are scheduled to *Flip* every 2 hours. This implies that you have a refresh cycle of 2 hours. Each organization will have different refresh cycles based on their business requirements. The flip time is controlled by a property in the ControlServerProperties table and can be changed as follows. 
 
@@ -56,7 +66,11 @@ Where Name = 'FlipInterval'
 
 ## 5. Create fact and dimension tables in all the physical data warehouses - both loader and reader
 
+
+## 6. Create fact and dimension tables in all the physical data warehouses - both loader and reader.
+
 You will need to create tables in both of the data warehouses (Loader and Reader). Since SQL DW is based on MPP technology, please read the [documentation](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-overview) on how to create tables.
+
 
 #### Example Create Table Region
 
@@ -76,7 +90,8 @@ WITH
 Create all the tables needed for your organization.
 
 
-## 6. Insert entries in the mapping DWTable in the Job Manager SQL Database
+
+## 7. Insert entries in the mapping DW-Table in the Job Manager SQL Database.
 
 Once the tables are created, the next step is to insert entries in Job Manager database so that, when a file is uploaded and registered with Job Manager, the correct data factory pipeline is created to load data into the SQL DW instances.
 

@@ -13,7 +13,7 @@ Deploying the solution, provisions two SSRS virtual machines frontended by an [A
 1. Obtain the **SSRS** load balancer url from the deployment summary page. 
 	- For instance `http://<unique_name_prefix>ssrslb.ciqsedw.ms/reports`.
 
-![ssrs-url](../img/reportingserver_assets/ssrs-url.png)
+![ssrs-url](../img/ssrs-url.png)  
 
 2. Point your web browser to the SSRS load balancer url.
 3. Enter the admin credentials on the prompt. 
