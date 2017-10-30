@@ -25,9 +25,12 @@ This TRI addresses this customer pain by providing a reference implementation th
 Once deployed, the TRI can be used as-is, or customized to fit the application needs using the technical documentation that is provided with the TRI. This enables the customer to build the solution that delivers the business goals based on a robust and functional infrastructure.
 
 ## Audience
-Business decision makers and evaluators can review the content in the **Solution Overview LINK TBD** folder to understand the benefits of using the TRI. For more information on how to tailor the TRI for your needs, **connect with one of our partners LINK TBD**.
 
 It is recommended that the TRI is reviewed and deployed by a person who is familiar with operational concepts of data warehousing, business intelligence, and analytics. Knowledge of Azure is a plus, but not mandatory. The technical guides provide pointers to Azure documentation for all the resources employed in this TRI.
+
+>Note: If you have already deployed this solution, click [here](https://start.cortanaintelligence.com/track/Deployments?type=enterprisebiandreporting) to view your deployment. Connect with one of our Advanced Analytics partners to arrange a proof of concept in your environment: [Artis Consulting](http://www.artisconsulting.com/)
+
+For more information on how to tailor the TRI for your needs, **connect with one of our partners LINK TBD**.
 
 ## Architecture 
 
