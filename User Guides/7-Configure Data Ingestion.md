@@ -9,22 +9,6 @@ Once the TRI is deployed, these are your two options to ingest your ETL-processe
 
 The TRI deploys a dedicated VM for data generation, with a Powershell script placed in the VM. This script gets called by the Job Manager at a regular cadence (that is configurable). You can modify this script as follows;
 
-1. **Install the VPN client:** This has multiple steps:
-- Confirm that your client machine has the two certificates installed for VPN connectivity to the VM (see [prerequisites](https://msdata.visualstudio.com/AlgorithmsAndDataScience/TRIEAD/_git/CIPatterns?_a=preview&path=%2Fdoc%2FPrerequisites.md)).
-- Login to http://portal.azure.com, and find the Resource Group that corresponds to the VNet setup. Pick the **Virtual Network** resource, and then the **Virtual Network Gateway** in that resource.
-- Click on **Point-to-site configuration**, and **Download the VPN client** to the client machine.
-- Install the 64-bit (Amd64) or 32-bit (x86) version based on your Windows operating system. The  modal dialog that pops up after you launch the application may show up with a single **Don't run** button. Click on **More**, and choose **Run anyway**.
-- Finally, choose the relevant VPN connection from **Network & Internet Settings**. This should set you up for the next step.
-
-2. **Get the IP address for data generator VM:** From the portal, open the resource group in which the TRI is deployed (this will be different than the VNET resource group), and look for a VM with the string 'dg' in its name. 
-
- **TODO - The Filter input does not search for substrings - so the user will have to provide the exact prefix of the name or scroll through the VMs. Suggest that we make this easier with a 'DataGenerator' in the string.**
-
- Choose (i.e. click on) the VM, click on **Networking** tab for that specific VM, and find the private IP address that you can remote to.
-
-3. **Connect to the VM**: Remote Desktop to the VM using the IP address with the admin account and password that you specified as part of the pre-deployment checklist.
-
-**TODO - where can I find this information in the Azure Resource Group itself? This is relevant because the DevOps persona who deployed the TRI (using CIQS) may be different than the Developer who is trying to implement the data load (who knows nothing about CIQS).**
 
 4. **Confirm that prerequisites are installed in the VM** - Install **AzCopy** - if it is not already present in the VM (see [here](https://azure.microsoft.com/en-us/blog/azcopy-5-1-release/)). Confirm that GenData.exe
 
