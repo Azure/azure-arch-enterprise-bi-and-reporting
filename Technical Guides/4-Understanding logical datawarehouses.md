@@ -1,7 +1,7 @@
 # Configuring Logical Data Warehouses
 The TRI implements data load orchestration into multiple parallel data warehouses for redundancy and high availability.
 
-![Architecture](./ConfiguringSQLDWforTRI.png)
+![Architecture](../img/ConfiguringSQLDWforTRI.png)
 
 ## Data Availability and Orchestration features
 
