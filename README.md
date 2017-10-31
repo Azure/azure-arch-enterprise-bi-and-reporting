@@ -30,8 +30,6 @@ It is recommended that the TRI is reviewed and deployed by a person who is famil
 
 >Note: If you have already deployed this solution, click [here](https://start.cortanaintelligence.com/track/Deployments?type=enterprisebiandreporting) to view your deployment. Connect with one of our Advanced Analytics partners to arrange a proof of concept in your environment: [Artis Consulting](http://www.artisconsulting.com/)
 
-For more information on how to tailor the TRI for your needs, **connect with one of our partners LINK TBD**.
-
 ## Architecture 
 
 ![Architecture](./img/azure-arch-enterprise-bi-and-reporting.png)
@@ -53,11 +51,11 @@ an [availability-set of SSAS read-only servers](https://docs.microsoft.com/en-us
 
 ## User's Guide
 
-Please follow the step by step instructions in the [User's Guide](./UsersGuide/UsersGuide-ToC.md) to deploy and operationalize the TRI.
+Please follow the step by step instructions in the [User's Guide](https://github.com/Azure/azure-arch-enterprise-bi-and-reporting/blob/master/User%20Guides/UsersGuide-TOC.md) to deploy and operationalize the TRI.
 
 ## Technical Guides
 
-The design and operational details of the main data components of the TRI are provided in the [Technical Guide](./TechnicalGuide/TechnicalGuide-ToC.md). 
+The design and operational details of the main data components of the TRI are provided in the [Technical Guide](https://github.com/Azure/azure-arch-enterprise-bi-and-reporting/blob/master/Technical%20Guides/TechnicalGuide-ToC.md). 
 </Guide>
 
 # Disclaimer
