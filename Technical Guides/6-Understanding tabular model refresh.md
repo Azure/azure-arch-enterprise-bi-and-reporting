@@ -22,6 +22,24 @@ You can use tools such as the [SSDT tabular model designer](https://docs.microso
 
 Partition creation is automated using the open source [AsPartitionProcessing tool](https://github.com/Microsoft/Analysis-Services/tree/master/AsPartitionProcessing). Many of the configurable options for partition building directly correspond to the configuration of this tool. Refer to AsPartitionProcessing tool's [whitepaper](https://github.com/Microsoft/Analysis-Services/blob/master/AsPartitionProcessing/Automated%20Partition%20Management%20for%20Analysis%20Services%20Tabular%20Models.pdf) for further documentation.
 
+## Tabular Model Partition State Transition
+
+The following process outlines the various state transitions as incoming data is tracked until it is made available in the SSAS Read-only nodes:
+1. When a DWTableAvailabilityRange is marked as Completed, a TabularModelPartitionState item is created in Queued state (provided there is not already one that is tracking the same range) for that range.
+
+2. The Partition Builder virtual machine has a scheduled task that operates on TabularModelPartitionState items as follows:
+
+    1. It dequeues items that are in Queued state and moves them to the 'Dequeued' state.
+    2. It processes the items as per the processing strategy and moves the item to a 'Processed' state. This updates the SSAS database on the Partition Builder.
+    3. When it is time to flip the logical datawarehouses, a backup of the database is created to a storage account and changes the state on the TabularModelPartitionState to 'Ready' while updating the PartitionUri to point to the database backup location.
+
+3. The freshness of each SSAS database on each Read-Only virtual machine is maintained as TabularModelNodeAssignment. The Read-Only servers have scheduled tasks that monitor for TabularModelPartitionState items that are 'Ready' and have an EndDate that is later than the LatestPartitionDate (a watermark date to indicate freshness of data) on the TabularModelNodeAssignment. Once it finds such an item, the backup location of that item is fetched and restored on the Read-Only server.
+This process is done while ensuring that a configurable number of Read-Only virtual machines (represented by the MinSSASROServersNotInTransition value in the Control Server) are always kept running to serve active traffic.
+
+4. Once all the Read-Only servers have restored the SSAS database backup on the TabularModelPartitionStates, these items are moved from 'Ready' to 'Purged' while deleting the backups on the storage account to free up space. This is done by a job called the CleanupOldASBackupJob on the Job manager hosted on the Control Server.
+
+
+
 ## Tabular model configuration for continuous incremental refresh at scale
 The various orchestration components of the TRI refer to four configuration tables to enable continuous and incremental model refresh.
 
