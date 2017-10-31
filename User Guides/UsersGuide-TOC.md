@@ -4,7 +4,7 @@ The guide is organized along the sequence of steps that you need to follow to de
 
 - Step 1 - It is assumed that you have an Azure subscription. If not, [obtain a subscription](https://azure.microsoft.com/en-us/free/?v=17.39a). Then implement these [prerequisite steps before deployment](./1-Prerequisite%20Steps%20Before%20Deployment.md)
 
-- Step 2 - Next, [set up the deployment](./2-Set%20Up%20Deployment.md), starting from either the GitHub repository, or the Cortana Gallery.
+- Step 2 - Next, [set up the deployment](./2-Set%20up%20Deployment.md), starting from either the GitHub repository, or the Cortana Gallery.
 
 - Step 3 - Azure is a dynamic environment, and the TRI has several products in its architecture. Please monitor the deployment progress. If the deployment fails or stalls at a given step, you can [troubleshoot the deployment](./3-Troubleshoot%20the%20Deployment.md).
 
@@ -22,7 +22,7 @@ The guide is organized along the sequence of steps that you need to follow to de
 
 - Step 10 - To enable interactive BI against the SSAS cached models, [configure Power BI](./10-Configure%20Power%20BI.md) gateway to connect to the SSAS read-only servers through the front end load balancers, and the Power BI clients for dashboard access.
 
-- Step 11 - Now that all the data engines are set up, your next step is to do an [one-time load of historical data into the SQL DW](./11-Load%20historica%20data%20into%20the%20warehouse.md). Skip this step if you have no historical data, and are starting your BI project from scratch.
+- Step 11 - Now that all the data engines are set up, your next step is to do an [one-time load of historical data into the SQL DW](./11-Load%20historical%20data%20into%20the%20warehouse.md). Skip this step if you have no historical data, and are starting your BI project from scratch.
 
 - Step 12 - Follow this with an [one time load of all the historical tabular models](./12-Load%20historical%20tabular%20models.md).
 
@@ -34,7 +34,7 @@ The guide is organized along the sequence of steps that you need to follow to de
 
 - Step 16 - If you face any issues with the deployment, consult the [frequently asked questions](16-Frequently%20Asked%20Questions.md).
 
-- Step 17 - [Get help and support](./16-Get%20Help%20and%20Support) for any of the above steps from the documentation and additional resources provided with the TRI.
+- Step 17 - [Get help and support](./17-Get%20Help%20and%20Support) for any of the above steps from the documentation and additional resources provided with the TRI.
 
-- Step 18 - Finally, for any number of reasons, if you'd like to remove the deployed implementation from your subscription, you can follow these steps for [deleting the deployment](18-Deleting%20a%20deployment).
+- Step 18 - Finally, for any number of reasons, if you'd like to remove the deployed implementation from your subscription, you can follow these steps for [deleting the deployment](./18-Deleting%20a%20deployment).
 
