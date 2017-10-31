@@ -1,6 +1,6 @@
 # Setting up the Deployment
 
-Before you start the deployment, confirm that you have an Azure subscription with sufficient quota, and have implemented the prerequisites.
+Before you start the deployment, confirm that you have an Azure subscription with sufficient quota, and have implemented the [prerequisites](./1-Prerequisite%20Steps%20Before%20Deployment.md).
 
 Start the deployment by clicking on the DEPLOY button on the main page - which is README.md in the GitHub, or the solutions page in the Cortana Gallery. Once you click on DEPLOY, the deployment platform takes you through a series of questions to set up the TRI. This section explains each parameter in detail. 
 
