@@ -31,7 +31,7 @@ The following process outlines the various state transitions as incoming data is
 
     1. It dequeues items that are in Queued state and moves them to the 'Dequeued' state.
     2. It processes the items as per the processing strategy and moves the item to a 'Processed' state. This updates the SSAS database on the Partition Builder.
-    3. When it is time to flip the logical datawarehouses, a backup of the database is created to a storage account and changes the state on the TabularModelPartitionState to 'Ready' while updating the PartitionUri to point to the database backup location.
+    3. When it is time to flip the logical data warehouses, a backup of the database is created to a storage account and changes the state on the TabularModelPartitionState to 'Ready' while updating the PartitionUri to point to the database backup location.
 
 3. The freshness of each SSAS database on each Read-Only virtual machine is maintained as TabularModelNodeAssignment. The Read-Only servers have scheduled tasks that monitor for TabularModelPartitionState items that are 'Ready' and have an EndDate that is later than the LatestPartitionDate (a watermark date to indicate freshness of data) on the TabularModelNodeAssignment. Once it finds such an item, the backup location of that item is fetched and restored on the Read-Only server.
 This process is done while ensuring that a configurable number of Read-Only virtual machines (represented by the MinSSASROServersNotInTransition value in the Control Server) are always kept running to serve active traffic.

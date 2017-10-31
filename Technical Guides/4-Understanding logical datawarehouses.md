@@ -64,7 +64,7 @@ Here is an example schedule showing how the logical DW flips occur - with physic
 |16:00 | 19:00 |24:00 | Active | Load | Batch 3 is loaded into LDW 2, while LDW 1 becomes the primary |
 |20:00 | 23:00 |04:00 | Active | PAUSE | Admin pauses the Loader LDW 4 hours into the loading cycle |
 
-# DataWarehouse Flip Operation
+# Data Warehouse Flip Operation
 This transition of a LDW from Load to Active and vice versa a.k.a the "Flip Operation" is done every T hours where T is configurable by the user.
 The flip operation is executed through the following steps
 1. Once the current UTC time is past the end time of the current flip interval of T hours, a flip operation is initiated which needs to transition the currently Active LDW to Load status
@@ -84,7 +84,7 @@ When the next flip time comes around, this value will be used to set the next fl
 If the Admin wants to flip immediately then the end timestamp of the current flip interval will need to be updated to current UTC time in the LDWExpectedStates db table and flip operation should be initiated in the next couple of minutes.
 
 **What other situations will require Admin intervention**
-The flip operation requires a Load PDW to satisfy certain conditions before it can be made Active. These are explained in 2.a - 2.c of DataWarehouse Flip Operation. If load jobs get stuck or if scaling takes a long time, flip operation will be halted. If all the Direct Query nodes die, even then flip operation will not be triggered because currently ASDQ daemons initiate flip operation. Admin intervention will be required to address these.
+The flip operation requires a Load PDW to satisfy certain conditions before it can be made Active. These are explained in 2.a - 2.c of Data Warehouse Flip Operation. If load jobs get stuck or if scaling takes a long time, flip operation will be halted. If all the Direct Query nodes die, even then flip operation will not be triggered because currently ASDQ daemons initiate flip operation. Admin intervention will be required to address these.
 
 **Explain what other steps the Admin should NOT do with the flip pattern**
-Once a flip operation is started, Admin should not try to change the state of PDWs or LDWs by themselves. Since these states are maintained in the job manangers database, any mismatch between those and the real state will throw off the flip operation. If any of the PDWs die , Admin needs to get it back into the state as was last recorded in the database.
+Once a flip operation is started, Admin should not try to change the state of PDWs or LDWs by themselves. Since these states are maintained in the job manager's database, any mismatch between those and the real state will throw off the flip operation. If any of the PDWs die , Admin needs to get it back into the state as was last recorded in the database.

@@ -16,7 +16,7 @@ The guide is organized along the sequence of steps that you need to follow to de
 
 - Step 7 - The default data generator that is shipped with the TRI needs is programmed to load demo data files. So you need to modify this script to [configure the data ingestion](./7-Configure%20Data%20Ingestion.md) into the SQL Data Warehouse.
 
-- Step 8 - Once SQL DW is configured for data ingestion, the next step is to [configure the SQL Server Analysis Services](./8-Configure%20SQL%20Server%20Analysis%20Services.md) for generation of analytical tabular models for interactive BI, and the models enabling direct query acces for SSRS report generation.
+- Step 8 - Once SQL DW is configured for data ingestion, the next step is to [configure the SQL Server Analysis Services](./8-Configure%20SQL%20Server%20Analysis%20Services.md) for generation of analytical tabular models for interactive BI, and the models enabling direct query access for SSRS report generation.
 
 - Step 9 - Next, [configure SQL Server Reporting Services](./9-Configure%20SQL%20Server%20Reporting%20Services.md) to generate and serve reports.
 

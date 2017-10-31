@@ -11,7 +11,7 @@ Once the TRI is deployed, these are your two options to ingest your ETL-processe
 ## 1. Modify the code provided in the TRI to ingest your data
 
 
-The TRI deploys a dedicated VM for data generation, with a Powershell script placed in the VM. This script gets called by the Job Manager at a regular cadence (that is configurable). You can modify this script as follows;
+The TRI deploys a dedicated VM for data generation, with a PowerShell script placed in the VM. This script gets called by the Job Manager at a regular cadence (that is configurable). You can modify this script as follows;
 
 Confirm that prerequisites are installed in the VM - Install **AzCopy** - if it is not already present in the VM (see [here](https://azure.microsoft.com/en-us/blog/azcopy-5-1-release/)). 
 

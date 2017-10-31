@@ -7,7 +7,7 @@
 
 ## Summary
 <Guide type="Summary">
-This solution creates a reference implementation for an end to end BI and Reporting platform built using SQL Data Warehouse, SQL Server Analysis Services, SQL Server Reporting Services, Power BI, and custom solutions for job managment and coordination. Customers who are planning to build such a system for their enterprise applications, or  onboarding their on-prem solution can use this TRI to get a jumpstart on the infrastructure implementation, and customize it for their needs. System Integrators can partner with us to use this reference implementation to accelrate their customer deployments.
+This solution creates a reference implementation for an end to end BI and Reporting platform built using SQL Data Warehouse, SQL Server Analysis Services, SQL Server Reporting Services, Power BI, and custom solutions for job management and coordination. Customers who are planning to build such a system for their enterprise applications, or  onboarding their on-prem solution can use this TRI to get a jumpstart on the infrastructure implementation, and customize it for their needs. System Integrators can partner with us to use this reference implementation to accelerate their customer deployments.
 </Guide>
 
 ## Description

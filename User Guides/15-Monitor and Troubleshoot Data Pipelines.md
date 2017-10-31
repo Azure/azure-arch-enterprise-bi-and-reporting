@@ -14,10 +14,10 @@ All jobs should be completed through the normal course of a flip interval. Durin
 
 Pipelines may also fail. If you encounter a failure it's best to try to correct immediately as it will hold up any future flip operations. Each failed pipeline will be automatically recreated and retried every 5 minutes into the max retry count is reached.
 
-Pipepline states:
-- *Completed* - Pipeline ran succesfully.
-- *In Progress* - Pipelines is enqueued or being processd by ADF.
-- *Waiting* - Pipeline job is waiting on an internal dependency to be completed befored being enqueued.
+Pipeline states:
+- *Completed* - Pipeline ran successfully.
+- *In Progress* - Pipelines is enqueued or being processed by ADF.
+- *Waiting* - Pipeline job is waiting on an internal dependency to be completed before being enqueued.
 - *Failed* - The pipeline failed for an unknown reason.
 
 ![Dashboard](../img/adminui_assets/adminui-dashboard.png)
@@ -26,11 +26,11 @@ Pipepline states:
 
 The Administration UI is the best way to get a status of the overall system and its components. When you need more in-depth troubleshooting of the pipelines, it's best to work directly in the Azure portal.
 
-To peform any troubleshooting you first you need to find your data factory name. The name can found on the Administration UI dashboard in the Azure data factory element. The name should be of the format `Dev-LoadEDW-<GUID>`. Otherwise, you can find the name by directly inspecting the resources under the resource group of this deployment. There should only be one data factory for this deployment.
+To perform any troubleshooting you first you need to find your data factory name. The name can found on the Administration UI dashboard in the Azure data factory element. The name should be of the format `Dev-LoadEDW-<GUID>`. Otherwise, you can find the name by directly inspecting the resources under the resource group of this deployment. There should only be one data factory for this deployment.
 
 #### Monitor & Manage : View pipeline statuses
 
-The best way to view pipeline execution logs is through the Azure portal's *Mintor & Manage* dashboard of the data factory.
+The best way to view pipeline execution logs is through the Azure portal's *Monitor & Manage* dashboard of the data factory.
 
 1. Login to the [Azure portal](https://portal.azure.com)
 2. Search for the data factory by name.
@@ -39,7 +39,7 @@ The best way to view pipeline execution logs is through the Azure portal's *Mint
 5. In the bottom center of the data factory *MONITOR* tab, you will see an *ACTIVITY WINDOWS*. In this window you can filter by *Type*. Most likely you will want to find *Type8 of *Failed*.
 6. Click the activity row under investigation. This will open an *Activity window explorer* on right hand side.
 
-The *Activity window explorer* should give you any of the diagnostic issue you will need to determine the problem with the activity. The most usefull information will be **Failed execution** error logs. Based off the type of error encountered you will need to perform one of the following fixes:
+The *Activity window explorer* should give you any of the diagnostic issue you will need to determine the problem with the activity. The most useful information will be **Failed execution** error logs. Based off the type of error encountered you will need to perform one of the following fixes:
 
 1. A linked services is broken.
 2. The data being ingested in incorrect.
@@ -65,7 +65,7 @@ It's inevitable that some data you may be ingested was specified incorrectly. If
 
 #### Removing a failed jobs
 
-If a pipeline failing due to enoroneously specified data, you may want to simply remove the job entirely. The can be done by performing a delete on the `DWTableAvailabilityRanges` entries that are causing the problem. This can be done by directly connecting to the `ctrldb` or throught the `DWTableAVailabilityRanges` using the odata API.
+If a pipeline is failing due to erroneously specified data, you may want to simply remove the job entirely. The can be done by performing a delete on the `DWTableAvailabilityRanges` entries that are causing the problem. This can be done by directly connecting to the `ctrldb` or through the `DWTableAVailabilityRanges` using the odata API.
 
 **WARNING**: There is a `DWTableAvailabilityRanges` entry for each of the Data Warehouses. Only remove the entries related to your specific FileUri if the none of them have been processed. If you remove only some entries then the Data Warehouses will get out of sync.
 

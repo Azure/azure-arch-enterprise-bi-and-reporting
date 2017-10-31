@@ -1,6 +1,6 @@
 # Overview
 
-[PowerBI](https://powerbi.microsoft.com/en-us/) is used to create live reports and dashboards that can be shared across your organization. This document describes the steps needed to create and share a PowerBI dashboard for your Enterprise Reporting and BI Technical Refererence Implementation solution.
+[PowerBI](https://powerbi.microsoft.com/en-us/) is used to create live reports and dashboards that can be shared across your organization. This document describes the steps needed to create and share a PowerBI dashboard for your Enterprise Reporting and BI Technical Reference Implementation solution.
 
 # Install PowerBI Data Gateway
 
@@ -64,7 +64,7 @@ Under **Datasets**, click your new dataset. You can create whatever kind of repo
 
 ### Tab One
 
-Under **Visualizations** select **Pie chart**. Under **Fields** expand **FactInternetSales** and drag **SalesAmount** into **Legend** and **CustomerKey** into **Values**. Under **Filters** select **SalesAmount**, enter **greater than 250000**, and click **Applyfilter**.
+Under **Visualizations** select **Pie chart**. Under **Fields** expand **FactInternetSales** and drag **SalesAmount** into **Legend** and **CustomerKey** into **Values**. Under **Filters** select **SalesAmount**, enter **greater than 250000**, and click **Apply filter**.
 
 Under **Visualizations** select **TreeMap**. Under **Fields** expand **FactInternetSales** and drag **SalesAmount** into **Values** and **OrderDate** into **Group**. Under **Filters** select **SalesAmount**, enter **greater than 250000**, and click **Apply filter**.
 

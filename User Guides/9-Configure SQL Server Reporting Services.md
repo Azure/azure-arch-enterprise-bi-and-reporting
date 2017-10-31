@@ -9,7 +9,7 @@
 
 
 ### Connect to SSRS Web Portal
-Deploying the solution, provisions two SSRS virtual machines frontended by an [Azure Load balancer](https://azure.microsoft.com/en-us/services/load-balancer/) for high availability and performance. Follow the next steps to connect to the SSRS admin web-portal.  
+Deploying the solution, provisions two SSRS virtual machines front-ended by an [Azure Load balancer](https://azure.microsoft.com/en-us/services/load-balancer/) for high availability and performance. Follow the next steps to connect to the SSRS admin web-portal.  
 1. Obtain the **SSRS** load balancer url from the deployment summary page. 
 	- For instance `http://<unique_name_prefix>ssrslb.ciqsedw.ms/reports`.
 
