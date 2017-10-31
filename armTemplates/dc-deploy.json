@@ -45,6 +45,12 @@
         "description": "Address range of the existing subnet"
       }
     },
+    "dcVmName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Azure VM which will serve as the Domain Controller and the DNS server"
+      }
+    },
     "_artifactsLocation": {
       "type": "string",
       "metadata": {
@@ -63,7 +69,7 @@
   "variables": {
     "vhdStorageAccountName": "[concat('vhds', uniqueString(resourceGroup().id))]",
     "storageAccountType": "Premium_LRS",
-    "dcVMName": "adDC",
+    "dcVMName": "parameters('dcVmName')",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "imageSKU": "2016-Datacenter",
