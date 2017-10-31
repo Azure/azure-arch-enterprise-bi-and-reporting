@@ -1,8 +1,8 @@
-﻿# Prequisites for deploying Technical Reference Implementation for Enterprise BI and Reporting
+﻿# Prerequisites before deploying Technical Reference Implementation for Enterprise BI and Reporting
 
 # VNET
 
-Most of the resources provisioned will be placed in a pre-existing Azure VNET in the subscription that you will be specifying for the TRI to be deployed. Customers who already have a functioning Azure VNET and domain controller can skip this section. If not, an Azure VNET resource and a domain controller must be deployed in the subscription, following the steps provided in this guide.
+Most of the resources provisioned will be placed in a Azure VNET that is supposed to configured in the subscription where you will want the TRI to be deployed. Customers who already have a functioning Azure VNET and domain controller can skip this section. If not, an Azure VNET resource and a domain controller must be deployed in the subscription, following the steps provided in this guide.
 
 ## Provisioning Azure VNet resource and creating root and client certificates
 
@@ -43,7 +43,7 @@ To do that, run the PowerShell script below.
 ```PowerShell
 $securePassword = ConvertTo-SecureString -String "MyPassword" -Force –AsPlainText
 
-.\DeployDC.ps1 -SubscriptionName "My Subscription" -Location "eastus" -ResourceGroupName "ContosoVNetGroup" -VNetName "ContosoVNet" -DomainName "contosodomain.ms" -DomainUserName "MyUser" -DomainUserPassword $securePassword
+.\DeployDC.ps1 -SubscriptionName "My Subscription" -Location "eastus" -ResourceGroupName "ContosoVNetGroup" -VNetName "ContosoVNet" -DomainName "contosodomain.ms" -DnsVmName "contosodns" -DomainUserName "MyUser" -DomainUserPassword $securePassword
 ```
 
 The script above will provision an Azure VM and promote it to serve as the domain controller for the VNET. In addition, it will reconfigure the VNET to use the newly provisioned VM as its DNS server.
