@@ -33,7 +33,7 @@ In addition to the certificates generated/used for VNET connectivity, you will n
 2. A .CER file with the public key of the certificate authority to allow SSL encryption from a non-public certificate.
 3. Another .PFX file with the private key used to encrypt all of web server traffic over HTTPS, with its corresponding password.
 
-These certificate files should to publicly available for your Azure subscription, and they must be secure. We recommend that you store the files in Azure Storage with [Shared Access Signature (SAS)](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2) support. This will enable you to provide the certificates as Blob files, and set the password.
+These certificate files should be publicly available for your Azure subscription, and they must be secure. We recommend that you store the files in Azure Storage with [Shared Access Signature (SAS)](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2) support. This will enable you to provide the certificates as Blob files, and set the password.
 
 Examples:
 - Private key used by VMs to authenticate with Azure Active Directory: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoglobalcert.pfx_
