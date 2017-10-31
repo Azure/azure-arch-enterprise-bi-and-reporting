@@ -7,7 +7,7 @@ This page lists the steps you need to take for preparing the installed infrastru
 ## 1. Install VPN Client
 
  This has multiple steps:
-- Confirm that your client machine has the two certificates installed for VPN connectivity to the VM see [prerequisites]("1-Prerequisite Steps Before Deployment.md")
+- Confirm that your client machine has the two certificates installed for VPN connectivity to the VM see [prerequisites] for more details.(./1-Prerequisite%20Steps%20Before%20Deployment.md")
 - Login to http://portal.azure.com, and find the Resource Group that corresponds to the VNet setup. Pick the **Virtual Network** resource, and then the **Virtual Network Gateway** in that resource.
 - Click on **Point-to-site configuration**, and **Download the VPN client** to the client machine.
 - Install the 64-bit (Amd64) or 32-bit (x86) version based on your Windows operating system. The  modal dialog that pops up after you launch the application may show up with a single **Don't run** button. Click on **More**, and choose **Run anyway**.
@@ -64,8 +64,7 @@ SET value = 8
 Where Name = 'FlipInterval'
 ```
 
-## 5. Create fact and dimension tables in all the physical data warehouses - both loader and reader
-
+The above command changes the Flip time to every 8 hours.
 
 ## 6. Create fact and dimension tables in all the physical data warehouses - both loader and reader.
 
@@ -104,4 +103,4 @@ values
 ('dbo.regions','Fact',0,'edw_loader_mdrc',0,sysdatetime(),'admin',sysdatetime(),'admin');
 ```
 
-Insert entries for all the tables you have created in Step 5.
+Insert entries for all the tables you have created in Step 6.
