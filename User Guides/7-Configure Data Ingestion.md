@@ -34,13 +34,13 @@ Please adapt the below script as per your needs.
 ```Powershell
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 # Name:upload_file_prod.ps1
-# Description: This script is use to upload a file to Blob and indicate to control server that the file has been uploaded
+# Description: This script is use to upload a file to Blob and indicate to job manager that the file has been uploaded
 #              The script accepts 3 parameters. TableName, FileName and the Rundate. Here assumption is that a file is sent for a 24hr period.
 # Steps:
 #       1. Authenticate
-#       2. Contact control server to get the blob.
+#       2. Contact job manager to get the blob.
 #       3. Upload the file to the blob.
-#       4. Update control server that upload has finished
+#       4. Update job manager that upload has finished
 # 
 # Sample Command line: .\upload_file_prod.ps1 -Tablename 'dbo.customer' -FileName 'customer.tbl.1' -RunDate '20171002'
 #-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -143,7 +143,7 @@ $invocation = (Get-Variable MyInvocation).Value
 $directorypath = Split-Path $invocation.MyCommand.Path
 echo $directorypath > $LOG_FILE
 
-# Invoke the Control Server to fetch the latest blob container to upload the blobs to
+# Invoke the Job Manager to fetch the latest blob container to upload the blobs to
 try
 {
     $response = Invoke-RestMethod -Uri $getCurrentStorageAccountURI -Method Get -Headers $authenticationHeader
