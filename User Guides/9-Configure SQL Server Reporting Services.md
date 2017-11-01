@@ -8,7 +8,7 @@
 2.	[Subscribing to Reports via Email](#subscribing-to-reports-via-email)
 
 
-# Connect to SSRS Web Portal
+## Connect to SSRS Web Portal
 Deploying the solution, provisions two SSRS virtual machines front-ended by an [Azure Load balancer](https://azure.microsoft.com/en-us/services/load-balancer/) for high availability and performance. Follow the next steps to connect to the SSRS admin web-portal.  
 1. Obtain the **SSRS** load balancer url from the deployment summary page.
     > *e.g.* `http://<your-prefix>ssrslb.ciqsedw.ms/reports`.
@@ -25,10 +25,10 @@ Deploying the solution, provisions two SSRS virtual machines front-ended by an [
 4. If everything works correctly, you should now have successfully authenticated and can access the reports and data sources.   
     ![Home](../img/reportingserver_assets/ssrs-home.png)
 
-# Subscribing to Reports via Email
+## Subscribing to Reports via Email
 > This step is not automated by the solution, however, you can manually configure a custom SMTP server, such as SendGrid.
 
-## 1. Create SendGrid SMTP account on Azure
+### 1. Create SendGrid SMTP account on Azure
 1. Go to the [Azure portal](portal.azure.com).
 2. Search the market place for **SendGrid Email Delivery**.
 3. Create a new SendGrid account.
@@ -45,7 +45,7 @@ Deploying the solution, provisions two SSRS virtual machines front-ended by an [
 
 > **NOTE:** Password is the same one created when the SendGrid account was created. 
 
-## 2. Enter SendGrid credentials into Reporting Server
+### 2. Enter SendGrid credentials into Reporting Server
 1. Connect to both of your **SSRS Servers** using Remote Desktop.
 2. Open the **Reporting Services Configuration Manager**.
 3. Connect to the server instance.
@@ -64,7 +64,7 @@ Deploying the solution, provisions two SSRS virtual machines front-ended by an [
 
 > **Note:** There is no need to restart the Reporting Server service. It takes the most recent configuration. 
 
-## 3. Subscribe to a report to receive email delivery
+### 3. Subscribe to a report to receive email delivery
 1. Navigate to the Reporting Server web portal
 1. Right click on any paginated report you want to subscribe to.
 2. Click on **Subscribe**
