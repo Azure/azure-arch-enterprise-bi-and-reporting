@@ -44,4 +44,4 @@ It is recommended that the data files that are loaded into physical DW instances
 
 This will provide sufficient information to determine the intent of the file should it appear outside of the expected system paths.  The purpose of the audit file is to contain the rowcount, start/end date, filesize and checksum.  Audit files must appear next to their data files in the same working directory always.  Orphaned data or audit files should not be loaded.
 
-> To gain a deeper understanding of the flip process, please read [Anatomy of a Logical Data Warehouse Flip](./5-Understanding%20data%20warehouse%20flip).
+> To gain a deeper understanding of the flip process, please read [Anatomy of a Logical Data Warehouse Flip](./5-Understanding%20data%20warehouse%20flip.md).
