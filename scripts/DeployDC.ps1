@@ -9,6 +9,9 @@ Param(
     [string]$SubscriptionName,
 
     [Parameter(Mandatory=$true)]
+    [string]$DnsVmName,
+
+    [Parameter(Mandatory=$true)]
     [string]$Location,
 
     [Parameter(Mandatory=$true)]
@@ -51,6 +54,7 @@ $templateParameters = @{
     existingVirtualNetworkAddressRange=$virtualNetwork.AddressSpace.AddressPrefixes[0]
     dcSubnetName=$SubnetName
     existingSubnetAddressRange=$subnetAddressPrefix
+    dcVmName=$DnsVmName
 }
 
 $templateFilePath = Join-Path (Join-Path (Split-Path -Parent $scriptDir) 'armTemplates') 'dc-deploy.json'
