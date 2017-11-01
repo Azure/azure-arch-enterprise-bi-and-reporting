@@ -43,7 +43,7 @@ Here is an example schedule showing how the Flip Operation occurs using the foll
 |00:06 | Active | Active | Active | Active | `Transition` : PDW01-LDW01 | Normal : PDW01-LDW01 |
 |00:16 | Active | Active | Active | Active | `ChangeCompleted` : PDW01-LDW02 | Normal : PDW01-LDW01 |
 |00:26 | Active | Active | Active | Active | ChangeCompleted : PDW01-LDW02 | `Transition` : PDW01-LDW01 |
-|00:27 | Active | Active | `ScaleDownToLoad` | Active | `Normal` : PDW01-LDW02 | Normal : PDW02-LDW02 |
+|00:27 | Active | Active | `ScaleDownToLoad` | Active | `Normal` : PDW01-LDW02 | `Normal` : PDW02-LDW02 |
 |00:29 | `Load` | Active | `Load` | Active | Normal : PDW01-LDW02 | Normal : PDW02-LDW02 |
 
 ## FAQ
