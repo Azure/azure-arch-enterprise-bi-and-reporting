@@ -32,7 +32,7 @@ It is recommended that the TRI is reviewed and deployed by a person who is famil
 
 ## Architecture 
 
-![Architecture](https://raw.githubusercontent.com/Azure/azure-arch-enterprise-bi-and-reporting/master/img/azure-arch-enterprise-bi-and-reporting.png)
+![Architecture](./img/azure-arch-enterprise-bi-and-reporting.png)
 
 
 ### How the TRI works, in a Nutshell
