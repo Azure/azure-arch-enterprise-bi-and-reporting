@@ -2,7 +2,7 @@
 
 The TRI helps you operationalize and manage tabular models in Analysis Services for interactive BI. The read-only AS servers are configured to handle interactive BI query load from client connections via a front end load balancer. Analysis Services, tabular models, and their characteristics are explained [here]((https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas))
 
-The SSAS Model Cache in this TRI consists of six components - their roles described in the [architectural overview] (..\CiqsInstaller\CiqsInstaller\core\HomePage.md)
+The SSAS Model Cache in this TRI consists of six components - their roles described in the [architectural overview] (../README.md#architecture)
 - Tabular Models
 - SSAS Partition Builder
 - SSAS Read Only Cache servers

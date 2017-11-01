@@ -6,7 +6,7 @@ Most of the resources provisioned will be placed in a Azure VNET that is suppose
 
 ## Provisioning Azure VNet resource and creating root and client certificates
 
-First, create a new Azure VNET and VPN Gateway resource. Navigate to the <source root>\scripts directory and run the command below, after the parameter values to ones that apply to your environment. Note that it might take up to 45 minutes to complete.
+First, create a new Azure VNET and VPN Gateway resource. Navigate to the [scripts](../scripts) directory and run the command below, after the parameter values to ones that apply to your environment. Note that it might take up to 45 minutes to complete.
 
 ```PowerShell
 Login-AzureRmAccount
