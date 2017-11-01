@@ -1,5 +1,5 @@
 
-# [Technical Reference Implementation for Enterprise BI and Reporting](https://gallery.cortanaintelligence.com/Solution/enterprisebiandreporting)
+# [Technical Reference Implementation for Enterprise BI and Reporting](https://gallery.cortanaintelligence.com/Solution/Enterprise-Reporting-and-BI-Technical-Reference-Implementation-2)
 
 [![Deploy to Azure](https://raw.githubusercontent.com/Azure/Azure-CortanaIntelligence-SolutionAuthoringWorkspace/master/docs/images/DeployToAzure.PNG)](https://start.cortanaintelligence.com/track/Deployments/new/enterprisebiandreporting?source=GitHub)
 
@@ -28,11 +28,11 @@ Once deployed, the TRI can be used as-is, or customized to fit the application n
 
 It is recommended that the TRI is reviewed and deployed by a person who is familiar with operational concepts of data warehousing, business intelligence, and analytics. Knowledge of Azure is a plus, but not mandatory. The technical guides provide pointers to Azure documentation for all the resources employed in this TRI.
 
->Note: If you have already deployed this solution, click [here](https://start.cortanaintelligence.com/track/Deployments?type=enterprisebiandreporting) to view your deployment. Connect with one of our Advanced Analytics partners to arrange a proof of concept in your environment: [Artis Consulting](http://www.artisconsulting.com/)
+>Note: Connect with one of our Advanced Analytics partners to arrange a proof of concept in your environment: [Artis Consulting](http://www.artisconsulting.com/)
 
 ## Architecture 
 
-![Architecture](./img/azure-arch-enterprise-bi-and-reporting.png)
+![Architecture](https://raw.githubusercontent.com/Azure/azure-arch-enterprise-bi-and-reporting/master/img/azure-arch-enterprise-bi-and-reporting.png)
 
 
 ### How the TRI works, in a Nutshell
@@ -58,6 +58,7 @@ Please follow the step by step instructions in the [User's Guide](./User%20Guide
 The design and operational details of the main data components of the TRI are provided in the [Technical Guide](./Technical%20Guides/TechnicalGuide-ToC.md). 
 </Guide>
 
-# Disclaimer
-
+## Disclaimer
+<Guide type="Disclaimer">
 ©2017 Microsoft Corporation. All rights reserved. This information is provided "as-is" and may change without notice. Microsoft makes no warranties, express or implied, with respect to the information provided here. Third party data was used to generate the solution. You are responsible for respecting the rights of others, including procuring and complying with relevant licenses in order to create similar datasets.
+</Guide>
