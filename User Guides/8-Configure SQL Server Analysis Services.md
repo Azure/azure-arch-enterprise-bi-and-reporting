@@ -1,6 +1,6 @@
 # Analysis Services for Interactive BI
 
-The TRI helps you operationalize and manage tabular models in Analysis Services for interactive BI. The read-only AS servers are configured to handle interactive BI query load from client connections via a front end load balancer. Analysis Services, tabular models, and their characteristics are explained [here]((https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas))
+The TRI helps you operationalize and manage tabular models in Analysis Services (AS) for interactive BI. The read-only AS servers are configured to handle interactive BI query load from client connections via a frontend load balancer. Analysis Services, tabular models, and their characteristics are explained [here]((https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas))
 
 The SSAS Model Cache in this TRI consists of six components - their roles described in the [architectural overview] (..\CiqsInstaller\CiqsInstaller\core\HomePage.md)
 - Tabular Models
@@ -14,9 +14,9 @@ The SSAS Model Cache in this TRI consists of six components - their roles descri
 
 ## Tabular Model Creation
 
-Tabular models are Analysis Services databases that run in-memory, or act a pass-through for backend data sources. They support cached summaries and drilldowns of large amounts of data, thanks to a columnar storage that offers 10x or more data compression. This makes them ideal for interactive BI applications. See [this article](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas) for more details. Typically, tabular models hold only a subset of the big data held in upstream data warehouse or data marts – in terms of the number of entities, and data size. There is a large corpus of best practices information for tabular model design and tuning, including this [excellent article](https://msdn.microsoft.com/en-us/library/dn751533.aspx) on the lifecycle of an enterprise grade tabular model.
+Tabular models are Analysis Services databases that run in-memory, or act as a pass-through for backend data sources. They support cached summaries and drilldowns of large amounts of data, thanks to a columnar storage that offers 10x or more data compression. This makes them ideal for interactive BI applications. See [this article](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas) for more details. Typically, tabular models hold only a subset of the big data held in upstream data warehouse or data marts – in terms of the number of entities, and data size. There is a large corpus of best practices information for tabular model design and tuning, including this [excellent article](https://msdn.microsoft.com/en-us/library/dn751533.aspx) on the lifecycle of an enterprise grade tabular model.
 
-You can use tools such as the [SSDT tabular model designer](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-model-designer-ssas) available with Visual Studio 2015 (or greater) to create your tabular models. Set the compatibility level of the tabular models at 1200 or higher (latest is 1400 as of this writing) and the query mode to In-Memory. See [here](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-model-solutions-ssas-tabular) for details on tabular model creation.
+You can use tools such as the [SSDT tabular model designer](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-model-designer-ssas), available with Visual Studio 2015 (and later), to create your tabular models. Set the compatibility level of the tabular models at `1200` or higher (latest is `1400`, as of this writing) and the query mode to `In-Memory`. See [here](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-model-solutions-ssas-tabular) for details on tabular model creation.
 
 ## Tabular Model Partition Processing
 
@@ -33,7 +33,7 @@ You can provide configuration inputs for two of these tables:
 |**TabularModelTablePartitions**|This table specifies which model that a tabular model table is part of, and the source (DW) table to which a tabular model table is bound to. It also provides the column that will be used in refreshing the tabular model, and the lower and upper bounds of the data held in this tabular model. It also defines the strategy for processing the SSAS partitions.|
 
 ### TabularModel
-Provide the unique <_server, database_> pairs in the table. This information uniquely identifies each tabular model for the Job Manager, and in turn, will be used by the daemon on the Partition Builder nodes to connect to the SSAS server and the database before refresh.
+Provide the unique &lt;_server, database_&gt; pairs in the table. This information uniquely identifies each tabular model for the Job Manager, and in turn, will be used by the daemon on the Partition Builder nodes to connect to the SSAS server and the database before refresh.
 
 _Example_:
 
@@ -221,5 +221,3 @@ _example_:
 * **LatestPartitionDate**: Latest partition build date for the node.
 
 ---
-
-
