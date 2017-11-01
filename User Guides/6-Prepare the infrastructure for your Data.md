@@ -7,7 +7,7 @@ This page lists the steps you need to take for preparing the installed infrastru
 ## 1. Install VPN Client
 
  This has multiple steps:
-- Confirm that your client machine has the two certificates installed for VPN connectivity to the VM see [prerequisites](./1-Prerequisite%20Steps%20Before%20Deployment.md") for more details.
+- Confirm that your client machine has the two certificates installed for VPN connectivity to the VM see [prerequisites](./1-Prerequisite%20Steps%20Before%20Deployment.md) for more details.
 - Login to [Azure portal](http://portal.azure.com) and find the Resource Group that corresponds to the VNet setup. Pick the **Virtual Network** resource, and then the **Virtual Network Gateway** in that resource.
 - Click on **Point-to-site configuration**, and **Download the VPN client** to the client machine.
 - Install the 64-bit (Amd64) or 32-bit (x86) version based on your Windows operating system. The  modal dialog that pops up after you launch the application may show up with a single **Don't run** button. Click on **More**, and choose **Run anyway**.

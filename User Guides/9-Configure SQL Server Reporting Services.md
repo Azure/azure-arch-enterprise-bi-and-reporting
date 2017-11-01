@@ -29,12 +29,12 @@ Deploying the solution, provisions two SSRS virtual machines front-ended by an [
 
 ### Subscribing to Reports via Email
 This step isn't automated by the solution, however, users can manually configure an email subscription in very few steps. The following requirements must be met for this.  
-- Create a SendGrid SMTP username and password on [Azure](portal.azure.com).
+- Create a SendGrid SMTP username and password on [Azure](https://portal.azure.com).
 - Enter these created credentials on the **SSRS Server** for email delivery.
 
 
 ##### 1. Create SendGrid SMTP credentials on Azure
-1. Go to the [Azure portal](portal.azure.com).
+1. Go to the [Azure portal](https://portal.azure.com).
 2. Search the market place for **SendGrid Email Delivery**.
 3. Create a new SendGrid account.
 
