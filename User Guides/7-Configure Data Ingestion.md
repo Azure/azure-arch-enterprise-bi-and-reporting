@@ -13,7 +13,7 @@ Once the TRI is deployed, these are your two options to ingest your ETL-processe
 
 The TRI deploys a dedicated VM for data generation, with a PowerShell script placed in the VM. This script gets called by the Job Manager at a regular cadence (that is configurable). You can modify this script as follows;
 
-Confirm that prerequisites are installed in the VM - Install **AzCopy** - if it is not already present in the VM (see [here](https://azure.microsoft.com/en-us/blog/azcopy-5-1-release/)). 
+Confirm that prerequisites are installed in the VM - Install **AzCopy** - if it is not already present in the VM (see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)). 
 
 Modify the code as per your requirements and run it: The PowerShell script `GenerateAndUploadDataData.ps1` is located in the VM at `C:\EDW\datagen-artifacts`. Please note that this script generates and uploads data.
 

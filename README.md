@@ -51,11 +51,11 @@ an [availability-set of SSAS read-only servers](https://docs.microsoft.com/en-us
 
 ## User's Guide
 
-Please follow the step by step instructions in the [User's Guide](https://github.com/Azure/azure-arch-enterprise-bi-and-reporting/blob/master/User%20Guides/UsersGuide-TOC.md) to deploy and operationalize the TRI.
+Please follow the step by step instructions in the [User's Guide](./User%20Guides/UsersGuide-TOC.md) to deploy and operationalize the TRI.
 
 ## Technical Guides
 
-The design and operational details of the main data components of the TRI are provided in the [Technical Guide](https://github.com/Azure/azure-arch-enterprise-bi-and-reporting/blob/master/Technical%20Guides/TechnicalGuide-ToC.md). 
+The design and operational details of the main data components of the TRI are provided in the [Technical Guide](./Technical%20Guides/TechnicalGuide-ToC.md). 
 </Guide>
 
 ## Disclaimer

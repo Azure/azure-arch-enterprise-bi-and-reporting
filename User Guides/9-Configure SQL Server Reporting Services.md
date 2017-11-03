@@ -29,7 +29,7 @@ Deploying the solution, provisions two SSRS virtual machines front-ended by an [
 > This step is not automated by the solution, however, you can manually configure a custom SMTP server, such as SendGrid.
 
 ### 1. Create SendGrid SMTP account on Azure
-1. Go to the [Azure portal](portal.azure.com).
+1. Go to the [Azure portal](https://portal.azure.com).
 2. Search the market place for **SendGrid Email Delivery**.
 3. Create a new SendGrid account.
 

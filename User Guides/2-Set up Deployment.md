@@ -17,7 +17,7 @@ Choose the Data Center location where you want to deploy the reference implement
 ### 4. Description
 Provide the description for this deployment.
 
-Once you click on create, the resource group gets created in your subscription. This is so that Azure has some resource in the subscription to record all the subsequent parameters that you are about to provide next. After this CREATE step, if you want to abandon your deployment, follow the instructions to cleanly [delete your deployment](./18-Deleting%20a%20deployment).
+Once you click on create, the resource group gets created in your subscription. This is so that Azure has some resource in the subscription to record all the subsequent parameters that you are about to provide next. After this CREATE step, if you want to abandon your deployment, follow the instructions to cleanly [delete your deployment](./18-Deleting%20a%20deployment.md).
 
 ## VNET and Certificates for component connectivity
 
