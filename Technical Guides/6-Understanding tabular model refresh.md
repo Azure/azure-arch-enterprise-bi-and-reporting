@@ -1,6 +1,6 @@
 # Analysis Services for Interactive BI
 
-The TRI helps you operationalize and manage tabular models in Analysis Services for interactive BI. The read-only AS servers are configured to handle interactive BI query load from client connections via a front end load balancer. Analysis Services, tabular models, and their characteristics are explained [here]((https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas))
+The TRI helps you operationalize and manage tabular models in Analysis Services (AS) for interactive BI. The read-only AS servers are configured to handle interactive BI query load from client connections via a front end load balancer. Analysis Services, tabular models, and their characteristics are explained [here]((https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas))
 
 The SSAS Model Cache in this TRI consists of six components - their roles described in the [architectural overview](../README.md#architecture)
 - Tabular Models
@@ -14,7 +14,7 @@ The SSAS Model Cache in this TRI consists of six components - their roles descri
 
 ## Tabular Model Creation
 
-Tabular models are Analysis Services databases that run in-memory, or act a pass-through for backend data sources. They support cached summaries and drilldowns of large amounts of data, thanks to a columnar storage that offers 10x or more data compression. This makes them ideal for interactive BI applications. See [this article](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas) for more details. Typically, tabular models hold only a subset of the big data held in upstream data warehouse or data marts – in terms of the number of entities, and data size. There is a large corpus of best practices information for tabular model design and tuning, including this [excellent article](https://msdn.microsoft.com/en-us/library/dn751533.aspx) on the lifecycle of an enterprise grade tabular model.
+Tabular models are Analysis Services databases that run in-memory, or act a pass-through for backend data sources. They support cached summaries and drilldowns of large amounts of data, thanks to a columnar storage that offers 10x or more data compression. This makes them ideal for interactive BI applications. See [this article](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-models-ssas) for more details. Typically, tabular models hold only a subset of the big data held in upstream data warehouse or data marts – in terms of the number of entities and data size. There is a large corpus of best practices information for tabular model design and tuning, including this [excellent article](https://msdn.microsoft.com/en-us/library/dn751533.aspx) on the lifecycle of an enterprise grade tabular model.
 
 You can use tools such as the [SSDT tabular model designer](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-model-designer-ssas) available with Visual Studio 2015 (or greater) to create your tabular models. Set the compatibility level of the tabular models at 1200 or higher (latest is 1400 as of this writing) and the query mode to In-Memory. See [here](https://docs.microsoft.com/en-us/sql/analysis-services/tabular-models/tabular-model-solutions-ssas-tabular) for details on tabular model creation.
 
@@ -37,8 +37,6 @@ The following process outlines the various state transitions as incoming data is
 This process is done while ensuring that a configurable number of Read-Only virtual machines (represented by the MinSSASROServersNotInTransition value in the Control Server) are always kept running to serve active traffic.
 
 4. Once all the Read-Only servers have restored the SSAS database backup on the TabularModelPartitionStates, these items are moved from 'Ready' to 'Purged' while deleting the backups on the storage account to free up space. This is done by a job called the CleanupOldASBackupJob on the Job manager hosted on the Control Server.
-
-
 
 ## Tabular model configuration for continuous incremental refresh at scale
 The various orchestration components of the TRI refer to four configuration tables to enable continuous and incremental model refresh.
@@ -239,5 +237,3 @@ _example_:
 * **LatestPartitionDate**: Latest partition build date for the node.
 
 ---
-
-

@@ -1,42 +1,43 @@
 # Prepare the infrastructure for your Data
 
 ## Summary
-This page lists the steps you need to take for preparing the installed infrastructure for ingesting your own data.
-
+This page lists the steps to prepare your deployment for ingesting your own data.
 
 ## 1. Install VPN Client
 
- This has multiple steps:
 - Confirm that your client machine has the two certificates installed for VPN connectivity to the VM see [prerequisites](./1-Prerequisite%20Steps%20Before%20Deployment.md) for more details.
-- Login to [Azure portal](http://portal.azure.com) and find the Resource Group that corresponds to the VNet setup. Pick the **Virtual Network** resource, and then the **Virtual Network Gateway** in that resource.
+- Login to the [Azure portal](http://portal.azure.com) and find the Resource Group that corresponds to the VNet setup. Pick the **Virtual Network** resource, and then the **Virtual Network Gateway** in that resource.
 - Click on **Point-to-site configuration**, and **Download the VPN client** to the client machine.
-- Install the 64-bit (Amd64) or 32-bit (x86) version based on your Windows operating system. The  modal dialog that pops up after you launch the application may show up with a single **Don't run** button. Click on **More**, and choose **Run anyway**.
+- Install the `64-bit (Amd64)` or `32-bit (x86)` version, depending on your local Windows operating system. The modal dialog that pops up after you launch the application may show up with a single **Don't run** button. Click on **More**, and choose **Run anyway**.
 - Finally, choose the relevant VPN connection from **Network & Internet Settings**. This should set you up for the next step.
 
 
-## 2. Stopping Data generation #
+## 2. Stopping Data generation
 
 The TRI deploys a dedicated VM for data generation, with a PowerShell script placed in the VM. The PowerShell script is scheduled to run every 3 hours. We need to login into the VM and disable the schedule.
 
-* Get the IP address for data generator VM: From the portal, open the resource group in which the TRI is deployed (this will be different than the VNET resource group) and look for a VM with the name ending in `dgvm00`. 
-* Choose (i.e. click on) the VM.
+* Get the IP address of your data generator VM: From the portal, open the resource group in which the TRI is deployed (this will be different than the VNET resource group) and look for a VM with the name ending in `dgvm00`. 
+* Click the VM name.
 * Click on the **Networking** tab for that specific VM and find the private IP address at the top of the blade.
-* Connect to the VM: Remote Desktop to the VM using the IP address with the admin account and password that you specified as part of the deployment parameters. You need to make sure that you're connected to the VPN of the VM.
-* Start the Task Scheduler app and disable the task named "Generate and upload data".
+* Connect to the VM: Use Remote Desktop to connect to the VM using its IP address and the admin username and password that you specified as part of the deployment parameters. *You must be connected to the VPN in order to connect to the VM*.
+* Start the `Task Scheduler` app and disable the task named "Generate and upload data".
 
 
 ## 3. Drop AdventureWorks tables
 
 As part of the initial deployment, the TRI installs AdventureWorks tables in the data warehouse. We need to drop the tables in all the physical data warehouse instances to create a clean schema for your organization.
 
-* Login into the physical data warehouse: As a pre-requisite, install SSMS or SQLCMD based on your personal preference. From the Azure Portal, get the list of SQL Data Warehouses (SQL DWs) installed in your resource group. Click on each server and ensure that the firewall setting in each DW allows your client machine to connect. Connect to the SQL DWs based on your client tool preference.
-* Drop the tables: Once you login into the SQL DW database named "dw", you will be able to view the list of tables created in the dbo schema. Use the Drop command to drop all the 29 AdventureWorks tables.
+* Login into the physical data warehouse:
+  > As a pre-requisite, install either [SSMS](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) or [SQLCMD](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility) on your local computer, based on your personal preference.
+  
+  From the Azure Portal, get the list of SQL Data Warehouses (SQL DWs) installed in your resource group. Click on each server and ensure that the firewall setting in each DW allows your client machine to connect. Connect to the SQL DWs based on your client tool preference.
+* Drop the tables: Once you log into the SQL DW database named "dw", you will be able to view the list of tables created in the dbo schema. Use the `Drop` command to drop all 29 AdventureWorks tables.
 
 ## 4. Size your data warehouse: 
 
 As part of the initial deployment, the SQL DW physical instances are setup at DWU 100 to demonstrate the solution. Based on the data load volumes and query volumes, you will need to scale the SQL DW instances. Further details on sizing for scale are available [here](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview).
 
-Once you have determined the needed DWU's for your workload, the correct numbers have to be updated in the Job Manager SQL Server instance. You can login into Azure portal and locate the ctrldb server in the solution resource group. Login into the SQL server instance and update the dbo.ControlServerProperties table. For example, if you determine that you need DWU 1000 for loading and 2000 for queries, run the following SQL.
+Once you have determined the needed DWUs for your workload, the correct numbers must be updated in the Job Manager SQL Server instance. You can login into Azure portal and locate the ctrldb server in the solution resource group. Login into the SQL server instance and update the dbo.ControlServerProperties table. For example, if you determine that you need DWU 1000 for loading and 2000 for queries, run the following SQL.
 
 ```sql
 /* Updating Reader to 2000 */

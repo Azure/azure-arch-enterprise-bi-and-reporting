@@ -13,7 +13,5 @@ Please ensure that you have created the SSAS models and configured them in the J
 * Start SQL Server Management Studio (SSMS) and connect to Analysis Server.
 * Process the Model for full refresh.
 
-
 ## 3. Copy database to SSAS Read-Only nodes
 There are multiple ways you can sync up the SSAS tabular model from Partition builder to SSAS Read-Only nodes. One way is to backup the [database and restore](https://docs.microsoft.com/en-us/sql/analysis-services/multidimensional-models/backup-and-restore-of-analysis-services-databases) on each Read-Only node. Another option is to use the following [link](https://docs.microsoft.com/en-us/sql/analysis-services/multidimensional-models/synchronize-analysis-services-databases).
-

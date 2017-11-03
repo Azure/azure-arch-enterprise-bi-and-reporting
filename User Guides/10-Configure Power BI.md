@@ -26,15 +26,15 @@ Now that you are signed in, click **Next** and give your on-premises data gatewa
 
 ## Configure datasources
 
-You are now ready to create a dashboard using the data in your deployment. The first thing to do is browse to  [PowerBI Online](https://powerbi.microsoft.com) and sign in. Then, click **settings** at the top and select **Manage gateways**. Click the gateway you just created the click **Add data sources to use the gateway**. Next, enter a new data source name and select **Analysis Services** for the type. For **Server** enter the SSAS load balancer's IP address. You can find this the same way you found the SQL Server VM's IP address, except this time scroll down to the load balancers and click the one ending in "ssasrolb" and clicking **Frontend IP configuration**. For **database** enter **AdventureWorks**(unless you've reconfigured your own database). For **Username** and **Password** enter the values you chose for your deployment.
+You are now ready to create a dashboard using the data in your deployment. The first thing to do is browse to  [PowerBI Online](https://powerbi.microsoft.com) and sign in. Then, click **settings** at the top and select **Manage gateways**. Click the gateway you just created the click **Add data sources to use the gateway**. Next, enter a new data source name and select **Analysis Services** for the type. For **Server** enter the SSAS load balancer's IP address. You can find this the same way you found the SQL Server VM's IP address, except this time scroll down to the load balancers and click the one ending in "ssasrolb" and clicking **Frontend IP configuration**. For **database** enter **AdventureWorks** (unless you've reconfigured your own database). For **Username** and **Password** enter the values you chose for your deployment.
 
-> Note: **Username** here also requires the domain name which you specified during the deployment. So, **Username** should look like **DomainName** \ **Username**.
+> Note: **Username** here also requires the domain name which you specified during the deployment. So, **Username** should look like `DomainName\Username`.
 
 When ready, click **Add**.
 
 ## Add users to the datasource
 
-Next you click **Users** and add all the people who can publish reports using this datasource by entering their email addresses and clicking **Add**. The email you entered in setting up the on-premises PowerBI data gateway is already used by default.
+Next, click **Users** and add all the people who can publish reports using this datasource by entering their email addresses and clicking **Add**. The email you entered in setting up the on-premises PowerBI data gateway is already used by default.
 
 When ready, click **Map user names**. Enter the **Original name** (the user's email address) and the **New name** (the domain joined username from above) for all users. This will create mappings for each user's email id to the domain joined username for the SSAS Read Only VMs. Click [here](https://powerbi.microsoft.com/en-us/documentation/powerbi-gateway-enterprise-manage-ssas/#usernames-with-analysis-services) to learn more about usernames with Analysis Services.
 
@@ -42,13 +42,13 @@ When ready, click **OK**. You may need to wait a few minutes for the changes to 
 
 ## Create an app workspace
 
-Next you create a workspace. To do this, click **Workspaces** > **Create app workspace** and type a name for your workspace. If needed, edit it to be unique. You have a few options to set. If you choose Public, anyone in your organization can see what's in the workspace. Private, on the other hand, means only members of the workspace can see its contents.
+Next create a workspace. To do this, click **Workspaces** > **Create app workspace** and type a name for your workspace. If needed, edit it to be unique. You have a few options to set. If you choose Public, anyone in your organization can see what's in the workspace. Private means that only members of the workspace can see its contents.
 
-> Note: You can't change the Public/Private setting after you've created the workspace.
+> Note: You cannot change the Public/Private setting after you've created the workspace.
 
-You can also choose if members can edit or have view-only access. Add email addresses of people you want to have access to the workspace, and click **Add**. You can't add group aliases, just individuals. Decide whether each person is a member or an admin.
+You can also choose if members can edit or have view-only access. Add email addresses of people you want to have access to the workspace, and click **Add**. You cannot add group aliases, only individuals. Decide whether each person is a member or an admin.
 
-> Note: Admins can edit the workspace itself, including adding other members. Members can edit the content in the workspace, unless they have view-only access.
+> Note: Admins can edit the workspace itself, including adding other members. Members can edit the content in the workspace unless they have view-only access.
 
 When ready, click **save**.
 
@@ -56,7 +56,7 @@ When ready, click **save**.
 
 Now you are ready to create a report. Begin by clicking **Get Data**. Under **Databases** click **Get** > **SQL Server Analysis Services** > **Connect**. Scroll down and click on your newly created gateway. Click **AdventureWorks - Model** > **Connect**.
 
-> TIP: You may have to click refresh on your browser to see your new dataset.
+> TIP: You may have to refresh your browser to see your new dataset.
 
 ## Create a report
 

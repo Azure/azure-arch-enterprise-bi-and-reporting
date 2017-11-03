@@ -15,18 +15,20 @@ The TRI deploys a dedicated VM for data generation, with a PowerShell script pla
 
 Confirm that prerequisites are installed in the VM - Install **AzCopy** - if it is not already present in the VM (see [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)). 
 
-Modify the code as per your requirements and run it: The PowerShell script ``GenerateAndUploadDataData.ps1`` is located in the VM at ``C:\EDW\datagen-artifacts``. Please note that this script generates and uploads data.
+Modify the code as per your requirements and run it: The PowerShell script `GenerateAndUploadDataData.ps1` is located in the VM at `C:\EDW\datagen-artifacts`. Please note that this script generates and uploads data.
 
  See below for an example script which only uploads a file and registers with the job manager.
 
-The following information needs to be retrieved from your resource group.Login into Azure Portal and open the resource group where the solution was deployed.
+The following information needs to be retrieved from your resource group. Log into Azure Portal and open the resource group where the solution was deployed.
 Go to the Automation account in the resource group and open the automation Account variables. Following are the variables which are needed in the script below or for your own script.
 
-   1. ControlServerUri : Variable Name- controlServerUri
-   2. CertThumbprint: Variable Name - internalDaemonPfxCertThumbprint
-   3. AADTenantDomain: Variable Name - adTenantDomain
-   4. ControlServerIdentifierUris : Variable Name - adAppControlServerIdentifierUri
-   5. AADApplicationId: Variable Name - adAppControlServerId
+| Name | Variable |
+| ---- | -------- |
+| ControlServerUri | `controlServerUri` |
+| CertThumbprint | `internalDaemonPfxCertThumbprint` |
+| AADTenantDomain | `adTenantDomain` |
+| ControlServerIdentifierUris | `adAppControlServerIdentifierUri` |
+| AADApplicationId | `adAppControlServerId` |
 
 Please adapt the below script as per your needs.
 
@@ -246,6 +248,3 @@ In cases where you already have an ETL pipeline setup, you will need to do the f
 1. Use the above script as an example to get the blob account to upload.
 2. Upload the File to the storage account using your pipeline
 3. Inform the job manager that a file has been uploaded.
-
-
-
