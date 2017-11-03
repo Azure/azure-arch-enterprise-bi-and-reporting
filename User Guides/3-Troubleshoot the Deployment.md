@@ -32,6 +32,6 @@ Azure Functions are used to execute complex deployment steps that cannot be acco
 
 1. Find your deployment resource group in the [Azure portal](https://portal.azure.com) and click the `Deployments` blade. If you see a failed deployment, do not proceed to the next step since it is not a failure in an Azure Function.
 3. Go to your deployment resource group and click on the `Overview` blade. Then type 'functions-'  in the search text box which should filter it down to the Azure Functions resource that hosts various deployment steps. Click on that Azure function resource to open it.
-4. Under Functions, look for the function name that correlates somewhat to the step that failed. Alternately, you can click through each function. Click on the `Monitor` tab and examine failures in the Invocation log. Examine failures in the `Invocation log` by examining the `log`. Further investigation of the failure is required to root cause the problem. More often than not, the issue may related to the specific subscription.
+4. Under Functions, look for the function name that correlates somewhat to the step that failed. Alternately, you can click through each function. Click on the `Monitor` tab and examine failures in the Invocation log. Examine failures in the `Invocation log` by examining the `log`. Further investigation of the failure is required to root cause the problem. More often than not, the issue is related to the specific subscription.
 
 ![Azure Function failure](../img/azure-function-failure.png)

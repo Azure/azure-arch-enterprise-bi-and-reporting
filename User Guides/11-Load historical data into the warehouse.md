@@ -5,14 +5,9 @@ This page lists ways you can load historical data into the SQL Data Warehouse
 
 Loading of historical data will depend on the data size and retention policy on Azure Cloud. Depending on the size of the data, you can use either of following approaches
 
-1. Use the Solution itself to upload Files and load the data.
-2. Export the data and Upload using Blob Storage.
-3. Use Microsoft Import/Export Service to transfer data to Storage.
-
-
 ## 1. Use the Solution itself to upload files and load the data.
 
-In case your historical data size is small(GB to TB), you can use the following steps to load data.
+In case your historical data size is small (GB to TB), you can use the following steps to load data.
 * Export the data from your existing solution into on-premise storage as csv files.
 * Setup the data Ingestion pipeline as indicated in [Configure Data Ingestion](./7-Configure%20Data%20Ingestion.md)
 * Upload each data file as indicated in step 2 and let the solution ADF pipelines load into the SQL DW's

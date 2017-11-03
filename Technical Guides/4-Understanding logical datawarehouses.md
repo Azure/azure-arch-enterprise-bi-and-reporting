@@ -5,8 +5,6 @@ The TRI implements data load orchestration into multiple parallel data warehouse
 
 ## Data Availability and Orchestration features
 
-**TODO - Dev Team - Review the following and confirm if they apply for TRI-1**
-
 The logical Data Warehouse architecture and orchestration address these requirements:
 
 1. Each logical data warehouse (LDW) consists of a single physical data warehouse by default. More replicas per LDW can be configured for scalability and high availability. 

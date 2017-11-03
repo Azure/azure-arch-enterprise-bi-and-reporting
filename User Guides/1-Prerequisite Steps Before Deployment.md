@@ -2,11 +2,11 @@
 
 # VNET
 
-Most of the resources provisioned will be placed in a Azure VNET that is supposed to configured in the subscription where you will want the TRI to be deployed. Customers who already have a functioning Azure VNET and domain controller can skip this section. If not, an Azure VNET resource and a domain controller must be deployed in the subscription, following the steps provided in this guide.
+Most of the resources provisioned will be placed in an Azure VNET that should be configured in the subscription where you will want the TRI to be deployed. Customers who already have a functioning Azure VNET and domain controller can skip this section. If not, an Azure VNET resource and a domain controller must be deployed in the subscription, following the steps provided in this guide.
 
 ## Provisioning Azure VNet resource and creating root and client certificates
 
-First, create a new Azure VNET and VPN Gateway resource. Navigate to the <source root>\scripts directory and run the command below, after the parameter values to ones that apply to your environment. Note that it might take up to 45 minutes to complete.
+First, create a new Azure VNET and VPN Gateway resource. Navigate to the [scripts](../scripts) directory and run the command below, altering the parameter values to ones that apply to your environment. Note that it might take up to 45 minutes to complete.
 
 ```PowerShell
 Login-AzureRmAccount

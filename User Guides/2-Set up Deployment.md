@@ -1,6 +1,6 @@
 # Setting up the Deployment
 
-Before you start the deployment, confirm that you have an Azure subscription with sufficient quota, and have implemented the prerequisites.
+Before you start the deployment, confirm that you have an Azure subscription with sufficient quota, and have implemented the [prerequisites](./1-Prerequisite%20Steps%20Before%20Deployment.md).
 
 Start the deployment by clicking on the DEPLOY button on the main page - which is README.md in the GitHub, or the solutions page in the Cortana Gallery. Once you click on DEPLOY, the deployment platform takes you through a series of questions to set up the TRI. This section explains each parameter in detail. 
 
@@ -33,7 +33,7 @@ In addition to the certificates generated/used for VNET connectivity, you will n
 2. A .CER file with the public key of the certificate authority to allow SSL encryption from a non-public certificate.
 3. Another .PFX file with the private key used to encrypt all of web server traffic over HTTPS, with its corresponding password.
 
-These certificate files should to publicly available for your Azure subscription, and they must be secure. We recommend that you store the files in Azure Storage with [Shared Access Signature (SAS)](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2) support. This will enable you to provide the certificates as Blob files, and set the password.
+These certificate files should be publicly available for your Azure subscription, and they must be secure. We recommend that you store the files in Azure Storage with [Shared Access Signature (SAS)](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2) support. This will enable you to provide the certificates as Blob files, and set the password.
 
 Examples:
 - Private key used by VMs to authenticate with Azure Active Directory: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoglobalcert.pfx_
