@@ -18,6 +18,16 @@ These two properties track the datawarehouse compute units for the datawarehouse
 
 2. `FlipInterval`: This number stands for the number of hours after which we will attempt to flip the state of the logical datawarehouses (along with the physical datawarehouses under it) from `Active` to `Load`. The exact flip event times are visible in the Admin UI as well as the dbo.DWStateHistories table in the Job Manager database.
 
+3. `MinDQNodesNotInTransitionStateDuringFlip`: This number specifies the minimum number of Direct Query nodes in an `Analysis Services Direct Query (ASDQ)` group that should be in normal state serving queries during any flip operation. During any flip operation check for a direct query node, it is checked whether there are {`MinDQNodesNotInTransitionStateDuringFlip`} number of direct query nodes in normal state. If not then the node is not flipped and it awaits for the condition to be satisfied before flip can happen. If there in only a single node in an `ASDQ` group then this condition is ignored.
+
+4. `MinSSASROServersNotInTransition`: Minimum number of Read Only nodes that should be in Active state during a flip operation.
+
+5. `MinsAliasNodeDaemonGraceTime`: Time in minutes that a Direct Query node is given to drain existing connections during a flip operaton. The connection string to the physical datawarehouse is switched after {`MinsAliasNodeDaemonGraceTime`} minutes from the start of the flip operation initiation for the node.
+
+6. `MinsToWaitBeforeKillingAliasNodeDaemonGraceTime`: In case a Direct Query node does not respond back after `MinsAliasNodeDaemonGraceTime` minutes signalling the completion of its connection string switch (in case the node goes down), a sweeper job changes the state of the Direct Query node to `ChangeCompleted` after waiting for another  {`MinsToWaitBeforeKillingAliasNodeDaemonGraceTime`} minutes and unblocks the flip operation. When the node comes back up, it polls its new connection string from Control Server and is ready to serve requests.
+
+7. `BatchUriLinkedService`: The uri to the batch linked service.
+
 ### Change the password to the datawarehouse user account
 This section is TBD.
 
