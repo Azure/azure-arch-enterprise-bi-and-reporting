@@ -1,6 +1,6 @@
 # Technical Guides for Enterprise BI and Reporting
 
-The following documents describe the technical details of the various operational components after the TRI has been successfully deployed.
+The following documents describe the technical details of the various operational components of the TRI after it has been successfully deployed.
 
 1.[Understanding Ephemeral Storage Accounts](./1-Understanding%ephemeral%blobs.md) explains ephemeral blobs as the intermediary stage between data upload and ingestion.
 
