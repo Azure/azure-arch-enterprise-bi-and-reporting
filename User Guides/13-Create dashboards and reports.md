@@ -34,47 +34,40 @@ Now you are ready to create a report. Begin by clicking **Get Data**. Under **Da
 
 > TIP: You may have to refresh your browser to see your new dataset.
 
-## Create a report
+## Create reports and dashboards
 
 Under **Datasets**, click your new dataset. You can create whatever kind of report you want, but below are the steps for creating a three tabbed report showing some interesting data visualizations.
 
-### Tab One
+### Tab One - Percentage of sales contributed by each individual customer
 
 Under **Visualizations** select **Pie chart**. Under **Fields** expand **FactInternetSales** and drag **SalesAmount** into **Legend** and **CustomerKey** into **Values**. Under **Filters** select **SalesAmount**, enter **greater than 250000**, and click **Apply filter**.
 
 Under **Visualizations** select **TreeMap**. Under **Fields** expand **FactInternetSales** and drag **SalesAmount** into **Values** and **OrderDate** into **Group**. Under **Filters** select **SalesAmount**, enter **greater than 250000**, and click **Apply filter**.
 
-### Tab Two
+- Dashboard
+	![Internet Sales By Customer ID](../img/powerbi_assets/internet_sales_amt_by_customers.png)  
+
+### Tab Two - Underlying Fact tables
 
 Create a new tab. Under **Visualizations** click **Table**. Under **Fields** expand **FactInternetSales** and check all the fields. Click **Table** again, expand **FactProductInventory**, and check all fields. Click **Table** again, expand **FactResellerSales**, and check all fields. Click **Table** again, expand **FactSalesQuota**, and check all fields.
-
-### Tab Three
+- Dashboard  
+	![Internet Sales By Customer ID](../img/powerbi_assets/all_tables.png)
+        
+        
+### Tab Three - Sales summary for top spending customers and sales amount ordered by date
 
 Create a new tab. Under **Visualizations** click **Clustered column chart**. Under **Fields** expand **FactInternetSales** and drag **SalesAmount** to **Axis** and **CustomerKey** to **Value**. Click **CustomerKey** and select **Count (Distinct)**.
 
-Under **Visualizations** select **Stacked column chart**. Under **Fields** expand **FactInternetSales** and drag **SalesAmount** to **Value** and **OrderDate** to **Axis**.
+Under **Visualizations** select **Stacked column chart**. Under **Fields** expand **FactInternetSales** and drag **SalesAmount** to **Value** and **OrderDate** to **Axis**.  
+- Dashboard  
+	![Internet Sales By Customer ID](../img/powerbi_assets/internet_sales_summary.png)  
 
 When ready, click **Save this report**, enter a name for your report, and click **Save**.
+
+
+**NOTE: You can click “Text box” to add custom titles to all your report visualizations.**   
+![Customized Titles](../img/powerbi_assets/textbox.png)  
 
 ## Publish app
 
 For your new workspace, click **Publish app** in the upper right to start the process of sharing all the content in that workspace. First, for **Details**, fill in the description to help people find the app. You can set a background color to personalize it. Next, for **Content**, you see the content that’s going to be published as part of the app – everything that’s in the workspace. You can also set the landing page (the dashboard or report people will see first when they go to your app) or none (in which case they’ll land on a list of all the content in the app). Last, for **Access**, decide who has access to the app: either everyone in your organization, or specific people or email distribution lists.  
-
-## Sample Dashboards
-The dashboards below were generated using following fact tables. 
-- **Internet Sales**
-- **Product Inventory**
-- **Reseller Sales**
-- **Sales Quota** 
-
-1. Percentage of sales contributed by each individual customer
-	- Dashboard
-		![Internet Sales By Customer ID](../img/powerbi_assets/internet_sales_amt_by_customers.png)
-
-3. Underlying tables for queries generated  
-	- Dashboard  
-		![Internet Sales By Customer ID](../img/powerbi_assets/all_tables.png)
-        
-4. Sales summary for top spending customers and sales amount ordered by date  
-	- Dashboard  
-		![Internet Sales By Customer ID](../img/powerbi_assets/internet_sales_summary.png)
