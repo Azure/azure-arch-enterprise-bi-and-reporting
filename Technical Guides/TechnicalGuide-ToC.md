@@ -1,4 +1,4 @@
-# Technical Guids for Enterprise BI and Reporting
+# Technical Guides for Enterprise BI and Reporting
 
 The following documents describe the technical details of the various operational components after the TRI has been successfully deployed.
 
