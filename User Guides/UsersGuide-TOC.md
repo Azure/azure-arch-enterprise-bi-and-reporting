@@ -1,4 +1,4 @@
-# User Guide for  for Enterprise BI and Reporting
+# User Guide for Enterprise BI and Reporting
 
 The guide is organized along the sequence of steps that you need to follow to deploy and operationalize the TRI. You can return to specific sections once you have successfully deployed the TRI end-to-end (i.e. after you have completed all the steps until Step 15 below). If the deployment is blocked at any stage, consult the [Get Help and Support](./17-Get%20Help%20and%20Support.md) section for mitigation and workarounds.
 
