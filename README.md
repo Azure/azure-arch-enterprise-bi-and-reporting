@@ -47,7 +47,7 @@ an [availability-set of SSAS read-only servers](https://docs.microsoft.com/en-us
 5. You can set up a Power BI gateway to the SSAS Read-Only nodes, enabling Power BI dashboards to access the tabular models.
 6. For reporting, SSRS generates the reports from data in the SQL DW via SSAS Direct Query. SSAS also offers row-level security for the data fetched from SQL DW.
 7. You can schedule report generation with SSRS using the Report Builder client tool. The generated reports are stored in SSRS servers. You can enable email-based delivery of reports to users.
-8. The end-to-end system can be managed via an Administrative web app. The TRI is configured with [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/), which you can enable RBAC (role based access control) for the users of your system, and [OMS](https://docs.microsoft.com/en-us/azure/operations-management-suite/operations-management-suite-overview), which enables you to monitor the individual components in the Azure resource group.
+8. The end-to-end system can be managed via an Administrative web app. The TRI is configured with [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/), which you can use to control access to the apps (Admin UI and Control Server) and underlying Azure resources for the users of your system, and [OMS](https://docs.microsoft.com/en-us/azure/operations-management-suite/operations-management-suite-overview), which enables you to monitor the individual components in the Azure resource group.
 
 ## User's Guide
 
