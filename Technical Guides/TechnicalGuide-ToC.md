@@ -2,11 +2,11 @@
 
 The following documents describe the technical details of the various operational components of the TRI after it has been successfully deployed.
 
-1. [Understanding Ephemeral Storage Accounts](./1-Understanding%ephemeral%blobs.md) - Explains ephemeral blobs as the intermediary stage between data upload and ingestion.
+1. [Understanding Ephemeral Storage Accounts](./1-Understanding%20ephemeral%20blobs.md) - Explains ephemeral blobs as the intermediary stage between data upload and ingestion.
 
-2. [Understanding data ingestion](./2-Understanding%data%ingestion.md)
+2. [Understanding data ingestion](./2-Understanding%20data%20ingestion.md)
 
-3. [Understanding data factory pipelines](./3-Understanding%data%factory%pipelines.md)
+3. [Understanding data factory pipelines](./3-Understanding%20data%20factory%20pipelines.md)
 
 4. [Understanding Logical Data Warehouses](./4-Understanding%20logical%20datawarehouses.md) - Explains the purpose and requirements of logical groupings of data warehouses.
 
