@@ -46,22 +46,48 @@ Clients can audit Logical and Physical Data Warehouse state transition history b
 ### Data Warehouse flip intervals
 As discussed in [Understanding Data Warehouse Flip](./5-Understanding%20data%20warehouse%20flip.md), a series of operations is required to be performed during the Data Warehouse flip. While the `/DWStatesHistory` OData API lists the times and the statuses of each Logical and Physical Data Warehouse state transition, `/LDWExpectedStates` API lists the flip intervals for each of the Logical Data Warehouses. I.e. what state a given Logical Data Warehouse should be in at a given time.
 
-## Analysis Services tabular model building
+## Analysis Service Direct Query node management
 ### Analysis Services Direct Query node to Physical Data Warehouse mapping
 As discussed in [Understanding Data Warehouse Flip](./5-Understanding%20data%20warehouse%20flip.md), Analysis Services Direct Query nodes run a daemon which ensures that the nodes are always connected to the Data Warehouse in `Active` state. During the Data Warehouse Flip, the daemons will update to point to the Logical Data Warehouse in `Active` state and call a Job Manager API to report which Physical Data Warehouse the node is connected to.
 
+This ensures that the Job Manager is always aware of which Physical Data Warehouses are connected to the Analysis Services Direct Query nodes and can perform data warehouse state transition accordingly.
+
 Clients can see which Physical Data Warehouse each of the Direct Query nodes is connected by calling `/PdwAliasNodeStates` OData API.
 
+## Analysis Services tabular model building
+As discussed in [Understanding Tabular Model Refresh](./6-Understanding%20tabular%20model%20refresh.md#tabular-model-partition-state-transition), Analysis Services Partition Builder nodes build tabular models to be consumed by the Analysis Services Read-only nodes. The Job Manager orchestrates tabular model building and Read-only node refresh by exposing a set of OData APIs. A daemon running on Analysis Services Partition Builder node calls a set of Job Manager APIs to query for and report on the progress of partition building.
+
 ### Analysis Services tabular models
-As discussed in [Understanding Tabular Model Refresh](./6-Understanding%20tabular%20model%20refresh.md#tabular-model-partition-state-transition), Analysis Services Partition Builder nodes build tabular models to be consumed by the Analysis Services Read-only nodes. 
+Clients can call `/TabularModels` OData API to fetch the list of tabular models with their server and database names. Partition Builder uses these server and database names to connect to the data source.
 
-Clients can call `/TabularModels` OData API to fetch the list of tabular models with their server and database names. These server and database names are used by the partition builder for connecting to the data source.
+### Analysis Services tabular model partitions
+Clients can call `/TabularModelTablePartitions` OData API to fetch the list of tabular model table partitions. For an in-depth discussion on their meaning, please refer to [Tabular model configuration for continuous incremental refresh at scale](./6-Understanding%20tabular%20model%20refresh.md#tabular-model-configuration-for-continuous-incremental-refresh-at-scale).
 
-### Analysis Services tabular model partitions and states
-Clients can call `/TabularModelTablePartitions` and `/TabularModelTablePartitionStates` OData APIs to fetch the list of tabular model table partitions and their states. For an in-depth discussion on their meaning, please refer to [Tabular model configuration for continuous incremental refresh at scale](./6-Understanding%20tabular%20model%20refresh.md#tabular-model-configuration-for-continuous-incremental-refresh-at-scale).
+### Analysis Services tabular model partition states
+Clients can call `/TabularModelTablePartitionStates` OData API to fetch the status of each of the tables in the tabular model. This API effectively shows the status of Analysis Services Partition Builder.
 
 ### Analysis Services tabular model node assignments
+Once the Partion Builder finishes building tabular model table partitions, Analysis Services Read-only nodes must refresh the models. Daemons running on Analysis Services Read-only nodes will call the Job Manager APIs to check if updates are available. Upon updating the model, the daemon will call a Job Manager API to mark the node as updated.
+
 Clients can call `/TabularModelNodeAssignments` OData API to find the latest partition for each tabular model table and each Analysis Services Read-only node.
+
+# The Job Manager Properties and misc APIs
+
+## Job Manager Status API
+Clients can use `/ServerStatus` OData API as an HTTP ping function to ensure that the Job Manager is up and serving requests. This could be useful for setting up external monitoring and HTTP probes.
+
+## Job Manager Properties
+Clients can query and update the Job Manager properties by calling `/ControlServerProperties` API. The table below summarizes the properties and their meaning.
+
+| Property name | Description |
+|:----------|:------------|
+|**ComputeUnits_Active**| Compute Data Warehouse Units for Physical Data Warehouses in `Active` state. Note that the value must match one of the values listed under [SQL Data Warehouse pricing](https://azure.microsoft.com/en-us/pricing/details/sql-data-warehouse/elasticity/). See [Data Warehouse Units (DWUs) and compute Data Warehouse Units (cDWUs)](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu) |
+|**ComputeUnits_Load**| Compute Data Warehouse Units for Physical Data Warehouses in `Load` state. Note that the value must match one of the values listed under [SQL Data Warehouse pricing](https://azure.microsoft.com/en-us/pricing/details/sql-data-warehouse/elasticity/). |
+|**ComputeUnits_Standby**| Compute Data Warehouse Units for Physical Data Warehouses in `Standby` state. Note that the value must match one of the values listed under [SQL Data Warehouse pricing](https://azure.microsoft.com/en-us/pricing/details/sql-data-warehouse/elasticity/). |
+|**MinDQNodesNotInTransitionStateDuringFlip**| This parameter specifies the minimum number of Analysis Services Direct Query nodes that will serve traffic during the data warehouse flip. By default, it is set to 1. As a result, the Job Manager will guarantee that at least one DQ node will always be available to serve traffic, while the rest of the fleet is performing the flip. |
+|**MinsAliasNodeDaemonGraceTime**| This parameter specifies the number of minutes that a Direct Query node will wait for the existing connections to be closed before the data warehouse flip is initiated. By default, it is set to 3. |
+|**MinSSASROServersNotInTransition**| This parameter specifies the minimum number of Analysis Services Read-only nodes that will serve traffic during the tabular model refresh. By default, it is set to 1. As a result, the Job Manager will ensure that at least on Read-only node will be ready to serve traffic, while the rest of the fleet is refreshing. |
+|**MinsToWaitBeforeKillingAliasNodeDaemonGraceTime**| This parameter specifies the number of minutes that each Analysis Services Direct Query node is given to perform the flip. If that time is exceeded, the Job Manager will terminate the flip. It is set to 10 minutes.  |
 
 
 
