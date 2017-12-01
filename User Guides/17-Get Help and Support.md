@@ -1,0 +1,2 @@
+# Getting Help and Support
+This reference implementation is supported during business hours via email by Microsoft at azent-biandreporting@microsoft.com, and also by [Artis Consulting](http://www.artisconsulting.com/) - a Microsoft Certified Partner.
