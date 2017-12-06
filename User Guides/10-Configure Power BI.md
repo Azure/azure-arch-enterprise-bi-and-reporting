@@ -27,3 +27,7 @@ Copy the installer executable from your local environment onto the VM. If you ar
 Once there, double click it to begin the installation. Click **Next** for all default options, accept the terms of agreement, and click **Install**. The installation takes a few minutes. Next, you need to register your gateway by entering an email address and clicking **Sign in**.
 
 Now that you are signed in, click **Next** and give your on-premises data gateway a name and recovery key and click **Configure**. Your gateway is now ready.
+
+## Create a Gateway Data Source in the Power BI Website
+
+The next step is to create a gateway data source so that the gateway knows how to connect to Analysis Services and knows which credentials to use. The steps are outlined in the [Manage your data source - Analysis Services](https://docs.microsoft.com/en-us/power-bi/service-gateway-enterprise-manage-ssas) documentation. The data source should be configured with the Server property being the SSAS Read-Only load balancer IP or DNS.
