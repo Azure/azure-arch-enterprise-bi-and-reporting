@@ -40,13 +40,13 @@ The TRI does not currently support the swapping of SQL DW with SQL DB.
 
 Although this is not a supported and tested scenario, removal of any node in the architecture should not effect the upstream nodes. As such, you can remove any nodes without seriously effecting the system. This will need to be performed manually in the [Azure portal](https://portal.azure.com) post deployment.
 
-Keep in mind, the administration UI and other components are not configured to dynamically account for the removal of these nodes so you will still see the presense of these components even though they may not be functional.
+Keep in mind, the administration UI and other components are not configured to dynamically account for the removal of these nodes so you will still see the presence of these components even though they may not be functional.
 
 ### Can I configure the TRI to remove the SSRS scheduled reporting components?
 
 Although this is not a supported and tested scenario, removal of any node in the architecture should not effect the upstream nodes. As such, you can remove any nodes without seriously effecting the system. This will need to be performed manually in the [Azure portal](https://portal.azure.com) post deployment.
 
-Keep in mind, the administration UI and other components are not configured to dynamically account for the removal of these nodes so you will still see the presense of these components even though they may not be functional.
+Keep in mind, the administration UI and other components are not configured to dynamically account for the removal of these nodes so you will still see the presence of these components even though they may not be functional.
 
 ### Are the tabular models backed up?
 
