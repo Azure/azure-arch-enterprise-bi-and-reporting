@@ -30,16 +30,43 @@ The next screen accepts the VNET parameters. If you created the VNET and provisi
 ### 6. Certificates to manage security between components
 In addition to the certificates generated/used for VNET connectivity, you will need to provide three more certificates to manage secure access between the different components in the TRI.
 1. A .PFX file with the private key used by Azure VMs to authenticate with Azure Active Directory, with its corresponding password.
+ ```PowerShell
+ $certName = "Contoso Client"
+ $certPassword = ConvertTo-SecureString "<password>" -AsPlainText -Force 
+ $cert = New-SelfSignedCertificate -DnsName $certName `
+     -CertStoreLocation cert:\CurrentUser\My `
+     -KeyExportPolicy Exportable `
+     -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider"
+ Export-PfxCertificate -Cert $cert -FilePath contosoglobalcert.pfx -Password $certPassword -Force | Write-Verbose
+ ```
 2. A .CER file with the public key of the certificate authority to allow SSL encryption from a non-public certificate.
+ ```PowerShell
+ $rootCertAuthorityName = "Contoso Certificate Authority"
+ $rootCert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+     -Subject "CN=$rootCertAuthorityName" -KeyExportPolicy Exportable `
+     -HashAlgorithm sha256 -KeyLength 2048 `
+     -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+ Export-Certificate -Cert $rootCert -FilePath contosoauthority.cer
+ ```
 3. Another .PFX file with the private key used to encrypt all of web server traffic over HTTPS, with its corresponding password.
-
+ ```Powershell
+ $dnsName = "*.edw.contoso.com"
+ $certPassword = ConvertTo-SecureString "<password>” -AsPlainText -Force
+ $sslCert = New-SelfSignedCertificate -DnsName $dnsName `
+     -CertStoreLocation cert:\CurrentUser\My -KeyExportPolicy Exportable `
+     -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+     -Signer $rootCert
+     -HashAlgorithm SHA256
+ Export-PfxCertificate -Cert $sslCert -FilePath contosossl.pfx -Password $certPassword -Force | Write-Verbose
+ ```
+ 
 These certificate files should be publicly available for your Azure subscription, and they must be secure. We recommend that you store the files in Azure Storage with [Shared Access Signature (SAS)](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2) support. This will enable you to provide the certificates as Blob files, and set the password.
 
 Examples:
-- Private key used by VMs to authenticate with Azure Active Directory: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoglobalcert.pfx_
-- Public key of a certificate authority to allow SSL encryption from a non-public certificate: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoauthority.cer_
+- Private key used by VMs to authenticate with Azure Active Directory: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoglobalcert.pfx
+- Public key of a certificate authority to allow SSL encryption from a non-public certificate: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoauthority.cer
 - Private key used to encrypt all web server traffic over HTTPS:
-http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoauthority.cer_
+http://_contosoblob_.blob.core.windows.net/_certificates_/_contosossl.pfx
 
 ## Configure the topology
 The parameters in this section are self-explanatory in the deployment configuration page.
