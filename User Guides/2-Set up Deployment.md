@@ -50,12 +50,13 @@ In addition to the certificates generated/used for VNET connectivity, you will n
  ```
 3. Another .PFX file with the private key used to encrypt all of web server traffic over HTTPS, with its corresponding password.
  ```Powershell
- $sslCert = New-SelfSignedCertificate -DnsName "*.edw.contoso.com" `
+ $dnsName = "*.edw.contoso.com"
+ $certPassword = ConvertTo-SecureString "<password>” -AsPlainText -Force
+ $sslCert = New-SelfSignedCertificate -DnsName $dnsName `
      -CertStoreLocation cert:\CurrentUser\My -KeyExportPolicy Exportable `
      -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
      -Signer $rootCert
      -HashAlgorithm SHA256
- $certPassword = ConvertTo-SecureString "<password>” -AsPlainText -Force
  Export-PfxCertificate -Cert $sslCert -FilePath contosossl.pfx -Password $certPassword -Force | Write-Verbose
  ```
  
