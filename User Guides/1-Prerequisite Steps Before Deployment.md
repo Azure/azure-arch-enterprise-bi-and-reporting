@@ -36,7 +36,16 @@ From the same PowerShell console that you used above, run the commands shown bel
 $rootCert = Get-ChildItem -Path cert:\CurrentUser\My | ?{ $_.Subject -eq "CN=ContosoRootCertificate" }
 $childCert = Get-ChildItem -Path cert:\CurrentUser\My | ?{ $_.Subject -eq "CN=ContosoChildCertificate" }
 
-$type = [System.Security.Cryptography.X509Certificates.X509Certificate]::pfx
+If($rootCert.Count -gt 1) {
+ Write-Output "More than one certificate by the name ContosoRootCertificate, selecting first certificate"
+ $rootCert = $rootCert[0] #Selecting first certificate
+}
+
+If($childCert.Count -gt 1) {
+ Write-Output "More than one certificate by the name ContosoChildCertificate, selecting first certificate"
+ $childCert = $childCert[0] #Selecting first certificate
+}
+
 $securePassword = ConvertTo-SecureString -String "MyPassword" -Force –AsPlainText
 
 Export-PfxCertificate -Cert $rootCert -FilePath "ContosoRootCertificate.pfx" -Password $securePassword -Verbose
