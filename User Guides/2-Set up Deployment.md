@@ -62,6 +62,10 @@ In addition to the certificates generated/used for VNET connectivity, you will n
  
 These certificate files should be publicly available for your Azure subscription, and they must be secure. We recommend that you store the files in Azure Storage with [Shared Access Signature (SAS)](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2) support. This will enable you to provide the certificates as Blob files, and set the password.
 
+:warning: **Please note**
+
+It is essential to generate the certificates above with `-Provider "Microsoft Enhanced RSA and AES Cryptographic Provider"` parameter. Otherwise, Azure Functions will not be able to download and decrypt the certificates and the deployment will fail during the "Download Certificate" step. 
+
 Examples:
 - Private key used by VMs to authenticate with Azure Active Directory: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoglobalcert.pfx
 - Public key of a certificate authority to allow SSL encryption from a non-public certificate: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoauthority.cer
