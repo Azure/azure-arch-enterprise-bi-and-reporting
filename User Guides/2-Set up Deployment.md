@@ -34,7 +34,7 @@ In addition to the certificates generated/used for VNET connectivity, you will n
  $certName = "Contoso Client"
  $certPassword = ConvertTo-SecureString "<password>" -AsPlainText -Force 
  $cert = New-SelfSignedCertificate -DnsName $certName `
-     -CertStoreLocation cert:\CurrentUser\My `
+     -CertStoreLocation cert:\LocalMachine\My `
      -KeyExportPolicy Exportable `
      -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider"
  Export-PfxCertificate -Cert $cert -FilePath contosoglobalcert.pfx -Password $certPassword -Force | Write-Verbose
@@ -45,17 +45,17 @@ In addition to the certificates generated/used for VNET connectivity, you will n
  $rootCert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
      -Subject "CN=$rootCertAuthorityName" -KeyExportPolicy Exportable `
      -HashAlgorithm sha256 -KeyLength 2048 `
-     -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+     -CertStoreLocation "Cert:\LocalMachine\My" -KeyUsageProperty Sign -KeyUsage CertSign
  Export-Certificate -Cert $rootCert -FilePath contosoauthority.cer
  ```
-3. Another .PFX file with the private key used to encrypt all of web server traffic over HTTPS, with its corresponding password.
+3. Another .PFX file with the private key used to encrypt all of web server traffic over HTTPS, with its corresponding password. Make sure that you replace "contosodomain.ms" with domain name specified during [Domain Controller](https://github.com/Azure/azure-arch-enterprise-bi-and-reporting/blob/master/User%20Guides/1-Prerequisite%20Steps%20Before%20Deployment.md#provisioning-the-domain-controller) setup.
  ```Powershell
- $dnsName = "*.edw.contoso.com"
+ $dnsName = "*.adminui.contosodomain.ms" # make sure to replace "contosodomain.ms" with your Domain Name if it is different
  $certPassword = ConvertTo-SecureString "<password>” -AsPlainText -Force
  $sslCert = New-SelfSignedCertificate -DnsName $dnsName `
-     -CertStoreLocation cert:\CurrentUser\My -KeyExportPolicy Exportable `
+     -CertStoreLocation cert:\LocalMachine\My -KeyExportPolicy Exportable `
      -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
-     -Signer $rootCert
+     -Signer $rootCert `
      -HashAlgorithm SHA256
  Export-PfxCertificate -Cert $sslCert -FilePath contosossl.pfx -Password $certPassword -Force | Write-Verbose
  ```
@@ -64,7 +64,7 @@ These certificate files should be publicly available for your Azure subscription
 
 :warning: **Please note**
 
-It is essential to generate the certificates above with `-Provider "Microsoft Enhanced RSA and AES Cryptographic Provider"` parameter. Otherwise, Azure Functions will not be able to download and decrypt the certificates and the deployment will fail during the "Download Certificate" step. 
+It is essential to generate the certificates above with `-Provider "Microsoft Enhanced RSA and AES Cryptographic Provider"` parameter and `-CertStoreLocation cert:\LocalMachine\My`. Otherwise, Azure Functions will not be able to download and decrypt the certificates and the deployment will fail during the "Download Certificate" step. 
 
 Examples:
 - Private key used by VMs to authenticate with Azure Active Directory: http://_contosoblob_.blob.core.windows.net/_certificates_/_contosoglobalcert.pfx
