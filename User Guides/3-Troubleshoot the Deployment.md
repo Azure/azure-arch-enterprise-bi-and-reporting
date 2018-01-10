@@ -25,7 +25,8 @@ Custom script extensions may fail intermittently. In this scenario, the **retry*
 8. Locate the extension with `Type` of `Microsoft.Compute.CustomScriptExtension`.
 9. Click the `...` and then `Uninstall`
 10. Wait for the uninstall to complete. This will take a minute or two.
-11. After the uninstall has completed, click the `Retry` button on the [deployments](https://start.cortanaintelligence.com/Deployments) page.
+11. Reboot the VM with the Restart button in the Azure portal and wait 5 minutes.
+12. After the reboot has completed, click the `Retry` button on the [deployments](https://start.cortanaintelligence.com/Deployments) page.
 
 ## Azure Function Failure
 Azure Functions are used to execute complex deployment steps that cannot be accomplished via ARM deployments. If retrying the deployment using the **retry** button does not work, please follow these steps to investigate the deployment failure.
