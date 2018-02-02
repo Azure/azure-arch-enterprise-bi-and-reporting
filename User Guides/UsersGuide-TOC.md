@@ -34,6 +34,6 @@ The guide is organized along the sequence of steps that you need to follow to de
 
 - Step 16 - If you face any issues with the deployment, consult the [frequently asked questions](16-Frequently%20Asked%20Questions.md).
 
-- Step 17 - [Get help and support](./17-Get%20Help%20and%20Support) for any of the above steps from the documentation and additional resources provided with the TRI.
+- Step 17 - [Get help and support](./17-Get%20Help%20and%20Support.md) for any of the above steps from the documentation and additional resources provided with the TRI.
 
 - Step 18 - Finally, for any number of reasons, if you'd like to remove the deployed implementation from your subscription, you can follow these steps for [deleting the deployment](./18-Deleting%20a%20deployment.md).
