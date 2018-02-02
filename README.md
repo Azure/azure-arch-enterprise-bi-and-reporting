@@ -73,9 +73,9 @@ In preparation for a deployment, please be aware that the default configuration 
 - 1 Log Analytics
 - 6 Load Balancers
 - 1 Data Factory
-- 1 Batch Accounts
+- 1 Batch Account
 - 6 Availability Sets
-- 1 Automation Accounts
+- 1 Automation Account
 - 1 Application Insight
 - 1 App Service Plan
 - 1 App Service
