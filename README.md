@@ -56,6 +56,29 @@ Please follow the step by step instructions in the [User's Guide](https://github
 ## Technical Guides
 
 The design and operational details of the main data components of the TRI are provided in the [Technical Guide](https://github.com/Azure/azure-arch-enterprise-bi-and-reporting/blob/master/Technical%20Guides/TechnicalGuide-ToC.md). 
+
+## Resource Consumption
+
+In preparation for a deployment, please be aware that the default configuration will use the following resources. The solution may be configured to use a different number of resources during deployment. Please adjust your quotas accordingly.
+
+- 10 Virtual Machines
+- 20 Cores
+- 8 Storage Accounts
+- 3 Sql Servers
+- 2 Sql Data Warehouses
+- 1 Sql Database
+- 6 OMS Solutions
+- 6 Network Security Groups
+- 10 Network Interfaces
+- 1 Log Analytics
+- 6 Load Balancers
+- 1 Data Factory
+- 1 Batch Account
+- 6 Availability Sets
+- 1 Automation Account
+- 1 Application Insight
+- 1 App Service Plan
+- 1 App Service
 </Guide>
 
 ## Disclaimer
